@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <!-- <link rel="stylesheet" href="../assets/css/estilo.css"> -->
+    <link rel="stylesheet" href="../assets/css/home/reset.css">
+    <link rel="stylesheet" href="../assets/css/fonts.css">
+    <link rel="stylesheet" href="../assets/css/home/home.css">
 </head>
 <body class="home-corpo">
     <main class="home-conteudo-principal">
@@ -15,8 +17,8 @@
                 <h2 class="home-titulo-destaque">COM POUCOS CLIQUES</h2>
                 <p class="home-descricao">Praticidade, estilo e pontualidade direto no seu celular.</p>
                 <div class="home-botoes-navegacao">
-                    <a href="./login.php" class="home-botao home-botao-entrar">ENTRAR</a>
-                    <a href="./cadastro.php" class="home-botao home-botao-registrar">REGISTRAR</a>
+                    <a href="../pages/login.php" class="home-botao home-botao-entrar">ENTRAR</a>
+                    <a href="../pages/cadastro.php" class="home-botao home-botao-registrar">REGISTRAR</a>
                 </div>
             </div>
             <div class="home-imagem-principal">
@@ -26,36 +28,39 @@
 
         <section class="home-secao-servicos">
             <h1 class="home-titulo-secao">NOSSOS SERVIÇOS</h1>
+            <div class="cards">
+                <div class="home-cartao-servico">
+                    <div class="home-cartao-servico-titulo">
+                        <h3 class="home-titulo-servico">CORTES MODERNOS</h3>
+                        <img src="../assets/imgs/home/imagem-home-tesoura.png" alt="Tesoura" class="home-icone-servico">
+                    </div>
+                    <img src="../assets/imgs/home/imagem-home-corte-moderno.png" alt="Corte Moderno" class="home-imagem-servico">
+                    <p class="home-descricao-servico">Transforme seu visual com cortes modernos e personalizados, feitos para destacar sua personalidade e estilo único.</p>
+                    <a href="#" class="home-botao home-botao-agendar">AGENDE</a>
+                </div>
 
-            <div class="home-cartao-servico">
-                <h3 class="home-titulo-servico">
-                    CORTES MODERNOS 
-                    <img src="../assets/imgs/home/imagem-home-tesoura.png" alt="Tesoura" class="home-icone-servico">
-                </h3>
-                <img src="../assets/imgs/home/imagem-home-corte-moderno.png" alt="Corte Moderno" class="home-imagem-servico">
-                <p class="home-descricao-servico">Transforme seu visual com cortes modernos e personalizados, feitos para destacar sua personalidade e estilo único.</p>
-                <a href="#" class="home-botao home-botao-agendar">AGENDE</a>
+                <div class="home-cartao-servico">
+                    <div class="home-cartao-servico-titulo">
+                        <h3 class="home-titulo-servico">BARBAS</h3>
+                        <img src="../assets/imgs/home/imagem-home-navalha.png" alt="Navalha" class="home-icone-servico">
+                    </div>
+
+                    <img src="../assets/imgs/home/imagem-home-barba.png" alt="Barba" class="home-imagem-servico">
+                    <p class="home-descricao-servico">Transforme seu visual com cortes modernos e personalizados, feitos para destacar sua personalidade e estilo único.</p>
+                    <a href="#" class="home-botao home-botao-agendar">AGENDE</a>
+                </div>
+
+                <div class="home-cartao-servico">
+                    <div class="home-cartao-servico-titulo">
+                        <h3 class="home-titulo-servico">SOBRANCELHAS</h3>
+                        <img src="../assets/imgs/home/imagem-home-cadeira.png" alt="Cadeira" class="home-icone-servico">
+                    </div>
+                    <img src="../assets/imgs/home/imagem-home-sombrancelha.png" alt="Sombrancelha" class="home-imagem-servico">
+                    <p class="home-descricao-servico">Transforme seu visual com cortes modernos e personalizados, feitos para destacar sua personalidade e estilo único.</p>
+                    <a href="#" class="home-botao home-botao-agendar">AGENDE</a>
+                </div>
             </div>
 
-            <div class="home-cartao-servico">
-                <h3 class="home-titulo-servico">
-                    BARBAS 
-                    <img src="../assets/imgs/home/imagem-home-navalha.png" alt="Navalha" class="home-icone-servico">
-                </h3>
-                <img src="../assets/imgs/home/imagem-home-barba.png" alt="Barba" class="home-imagem-servico">
-                <p class="home-descricao-servico">Transforme seu visual com cortes modernos e personalizados, feitos para destacar sua personalidade e estilo único.</p>
-                <a href="#" class="home-botao home-botao-agendar">AGENDE</a>
-            </div>
-
-            <div class="home-cartao-servico">
-                <h3 class="home-titulo-servico">
-                    SOMBRANCELHAS 
-                    <img src="../assets/imgs/home/imagem-home-cadeira.png" alt="Cadeira" class="home-icone-servico">
-                </h3>
-                <img src="../assets/imgs/home/imagem-home-sombrancelha.png" alt="Sombrancelha" class="home-imagem-servico">
-                <p class="home-descricao-servico">Transforme seu visual com cortes modernos e personalizados, feitos para destacar sua personalidade e estilo único.</p>
-                <a href="#" class="home-botao home-botao-agendar">AGENDE</a>
-            </div>
         </section>
 
         <section class="home-secao-contato">
