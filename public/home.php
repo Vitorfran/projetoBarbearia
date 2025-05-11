@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="../assets/css/home/reset.css">
+    <!-- <link rel="stylesheet" href="../assets/css/home/reset.css"> -->
     <link rel="stylesheet" href="../assets/css/fonts.css">
     <link rel="stylesheet" href="../assets/css/home/home.css">
 </head>
@@ -69,13 +69,19 @@
                 <div class="home-formulario-contato">
                     <form action="" method="post" class="home-formulario">
                         <label for="nome" class="home-rotulo">Nome</label>
-                        <input type="text" id="nome" name="nome" required class="home-campo-input">
+                        <div class="input-box">
+                          <input type="text" required class="home-campo-input">  
+                        </div>
 
                         <label for="email" class="home-rotulo">E-mail</label>
-                        <input type="email" id="email" name="email" required class="home-campo-input">
+                        <div class="input-box">
+                            <input type="email" required class="home-campo-input">
+                        </div>
 
                         <label for="mensagem" class="home-rotulo">Mensagem</label>
-                        <textarea id="mensagem" name="mensagem" rows="4" required class="home-campo-textarea"></textarea>
+                        <div class="input-box">
+                            <textarea rows="4" required class="home-campo-textarea"></textarea>
+                        </div>
 
                         <button type="submit" class="home-botao home-botao-enviar">Enviar</button>
                     </form>
