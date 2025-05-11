@@ -87,14 +87,14 @@
                     </form>
                 </div>
                 <div class="home-informacoes-contato">
-                    <p class="home-item-contato">
+                    <div>
                         <img src="../assets/imgs/home/imagem-home-telefone.png" alt="Telefone" class="home-icone-contato">
-                        (81) 99999-9999
-                    </p>
-                    <p class="home-item-contato">
+                        <p class="home-item-contato">(81) 99999-9999</p>
+                    </div>
+                    <div>
                         <img src="../assets/imgs/home/imagem-home-email.png" alt="Email" class="home-icone-contato">
-                        contato@cortai.com
-                    </p>
+                        <p class="home-item-contato">contato@cortai.com</p>
+                    </div>
                     <ul class="home-lista-redes">
                         <li class="home-item-rede"><a href="#"><img src="../assets/imgs/home/imagem-home-instagram.png" alt="Instagram" class="home-icone-rede"></a></li>
                         <li class="home-item-rede"><a href="#"><img src="../assets/imgs/home/imagem-home-facebook.png" alt="Facebook" class="home-icone-rede"></a></li>
