@@ -4,8 +4,7 @@
     --cor-terciaria: #854836;
 }
 body{
-    /* background-color: var(--cor-fundo); */
-    background-color: red;
+    background-color: var(--cor-fundo);
     font-family: "Poppins", sans-serif;
 }
 main{
