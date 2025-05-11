@@ -133,6 +133,7 @@ main{
 .home-formulario{
     display: flex;
     flex-direction: column;
+    border: solid;
 }
 .home-lista-redes{
     display: flex;
