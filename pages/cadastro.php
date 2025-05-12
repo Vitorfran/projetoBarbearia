@@ -1,13 +1,11 @@
 <?php
-// CONEXÃO COM BANCO (PDO)
-require_once __DIR__ . '/../config/database.php';
+require_once _DIR_ . '/../config/database.php';
 
-// PROCESSAMENTO DO FORMULÁRIO
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'] ?? '';
     $email = $_POST['email'] ?? '';
     $senha = $_POST['senha'] ?? '';
-    $tipo = 'cliente';
+    $tipo = $_POST['perfil'] ?? 'cliente'; // Agora pode ser 'cliente' ou 'profissional'
     $admin = false;
 
     if (empty($nome) || empty($email) || empty($senha)) {
@@ -23,14 +21,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha, tipo, admin) VALUES (?, ?, ?, ?, ?)");
             $success = $stmt->execute([$nome, $email, $senhaHash, $tipo, $admin]);
 
-            echo $success ? "Usuário cadastrado com sucesso!" : "Erro ao cadastrar usuário.";
+            if ($success) {
+                $usuarioId = $pdo->lastInsertId();
+
+                // Se for profissional (barbeiro), associar todos os serviços ativos
+                if ($tipo === 'profissional') {
+                    $servicos = $pdo->query("SELECT id FROM servicos WHERE ativo = 1")->fetchAll(PDO::FETCH_COLUMN);
+
+                    if (!empty($servicos)) {
+                        $stmtInsert = $pdo->prepare("INSERT INTO profissionais_servicos (profissional_id, servico_id) VALUES (?, ?)");
+
+                        foreach ($servicos as $servicoId) {
+                            $stmtInsert->execute([$usuarioId, $servicoId]);
+                        }
+                    }
+                }
+
+                echo "Usuário cadastrado com sucesso!";
+            } else {
+                echo "Erro ao cadastrar usuário.";
+            }
         }
     }
 }
 ?>
 
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="cadastro-header">
             <header>Cadastro</header>
         </div>
-        <form action="cadastro.php" method="POST"> <!-- Formulário com método POST -->
+        <form action="cadastro.php" method="POST">
             <div class="input-box">
                 <input type="text" class="input-field" placeholder="Nome" name="nome" autocomplete="off" required>
             </div>
@@ -59,8 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="cliente">Sou cliente</label>
                 </section>
                 <section>
-                    <input type="radio" id="barbeiro" name="perfil" value="barbeiro" class="animated-radio">
-                    <label for="barbeiro">Sou barbeiro</label>
+                    <input type="radio" id="profissional" name="perfil" value="profissional" class="animated-radio">
+                    <label for="profissional">Sou barbeiro</label>
                 </section>              
             </div>
             <div class="input-submit">
