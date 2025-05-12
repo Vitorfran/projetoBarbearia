@@ -165,7 +165,13 @@ main {
     Imagem dentro do card
 ------------------------------------------- */
 .home-imagem-servico {
-    margin: 1rem 0rem;         /* Espaço vertical */
+    width: 100%;          /* Ocupa 100% da largura do card */
+    height: auto;         /* Mantém a proporção da imagem */
+    max-height: 180px;    /* Altura máxima para padronização */
+    object-fit: cover;    /* Garante que a imagem cubra o espaço sem distorcer */
+    border-radius: 10px;  /* Bordas arredondadas para combinar com o card */
+    margin: 1rem 0;       /* Espaçamento vertical */
+    display: block;       /* Remove espaços indesejados abaixo da imagem */
 }
 
 /* -------------------------------------------
