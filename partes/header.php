@@ -17,18 +17,27 @@ session_start();
         <div class="logo">
             <img src="../assets/imgs/header/Cortai.png" alt="Cortai">
         </div>
+
+        <div class="menu-toggle">
+            <img class="menu-hamb" src="../assets/imgs/menu.png" alt="">
+        </div>
+        
+        <div class="overlay"></div>
+
+
         <nav>
+        <span class="close-btn"><i class="fas fa-times"></i></span>
             <ul>
                 <!-- Itens fixos para todos os usuários -->
-                <li><a href="../public/home.php#home-secao-servicos">Serviços</a></li>
+               <li><a href="../public/home.php#home-secao-servicos">Serviços</a></li>
                 <li><a href="../public/home.php#home-secao-contato">Contato</a></li>
                 <li><a href="../public/home.php#home-secao-planos">Planos</a></li>
                 
                 <?php if (isset($_SESSION['usuario'])): ?>
                     <!-- ITENS PARA USUÁRIO LOGADO -->
-                    <li><a href="../pages/meus_agendamentos.php">Meus Agendamentos</a></li>
-                    <li><a href="../pages/minha_conta.php">Minha Conta</a></li>
-                    <li><a href="../pages/logout.php">Sair</a></li>
+                    <li><a href="meus_agendamentos.php">Meus Agendamentos</a></li>
+                    <li><a href="minha_conta.php">Minha Conta</a></li>
+                    <li><a href="logout.php">Sair</a></li>
                 <?php else: ?>
                     <!-- ITENS PARA USUÁRIO NÃO LOGADO -->
                     <li><a href="../pages/login.php">Login</a></li>
@@ -37,3 +46,36 @@ session_start();
             </ul>
         </nav>
     </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav');
+            const overlay = document.querySelector('.overlay');
+            const closeBtn = document.querySelector('.close-btn');
+            
+            menuToggle.addEventListener('click', function() {
+                nav.classList.add('active');
+                overlay.classList.add('active');
+            });
+            
+            closeBtn.addEventListener('click', function() {
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+            
+            overlay.addEventListener('click', function() {
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+            
+            // Fechar o menu ao clicar em um link (opcional)
+            const navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    nav.classList.remove('active');
+                    overlay.classList.remove('active');
+                });
+            });
+        });
+    </script>
