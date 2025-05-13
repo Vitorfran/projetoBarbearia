@@ -20,15 +20,15 @@ session_start();
         <nav>
             <ul>
                 <!-- Itens fixos para todos os usuários -->
-               <li><a href="../public/home.php#home-secao-servicos">Serviços</a></li>
+                <li><a href="../public/home.php#home-secao-servicos">Serviços</a></li>
                 <li><a href="../public/home.php#home-secao-contato">Contato</a></li>
                 <li><a href="../public/home.php#home-secao-planos">Planos</a></li>
                 
                 <?php if (isset($_SESSION['usuario'])): ?>
                     <!-- ITENS PARA USUÁRIO LOGADO -->
-                    <li><a href="meus_agendamentos.php">Meus Agendamentos</a></li>
-                    <li><a href="minha_conta.php">Minha Conta</a></li>
-                    <li><a href="logout.php">Sair</a></li>
+                    <li><a href="../pages/meus_agendamentos.php">Meus Agendamentos</a></li>
+                    <li><a href="../pages/minha_conta.php">Minha Conta</a></li>
+                    <li><a href="../pages/logout.php">Sair</a></li>
                 <?php else: ?>
                     <!-- ITENS PARA USUÁRIO NÃO LOGADO -->
                     <li><a href="../pages/login.php">Login</a></li>
