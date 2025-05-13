@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ];
                 
                 // Redireciona para a home
-                header("Location: ../public/home.php");
+                header("Location: ../pages/home_auth.php");
                 exit;
             } else {
                 $_SESSION['erro'] = "Erro ao cadastrar usuário.";
