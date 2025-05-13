@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
         
         // Redireciona para a página apropriada
-        header('Location: ../public/home.php');
+        header('Location: ../pages/home_auth.php');
         exit;
     } else {
         $_SESSION['erro'] = "E-mail ou senha incorretos!";
