@@ -1,5 +1,5 @@
 <?php
-// CONEXÃO COM BANCO (PDO)
+session_start(); // Adicione esta linha no início do arquivo
 require_once __DIR__ . '/../config/database.php';
 
 // PROCESSAMENTO DO FORMULÁRIO
@@ -7,26 +7,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'] ?? '';
     $email = $_POST['email'] ?? '';
     $senha = $_POST['senha'] ?? '';
-    $tipo = 'cliente';
+    $tipo = $_POST['perfil'] ?? 'cliente'; // Pega o tipo do formulário
     $admin = false;
 
     if (empty($nome) || empty($email) || empty($senha)) {
-        echo "Preencha todos os campos!";
+        $_SESSION['erro'] = "Preencha todos os campos!";
+        header("Location: cadastro.php");
+        exit;
     } else {
         $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = ?");
         $stmt->execute([$email]);
 
         if ($stmt->fetch()) {
-            echo "Este e-mail já está cadastrado.";
+            $_SESSION['erro'] = "Este e-mail já está cadastrado.";
+            header("Location: cadastro.php");
+            exit;
         } else {
             $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
             $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha, tipo, admin) VALUES (?, ?, ?, ?, ?)");
             $success = $stmt->execute([$nome, $email, $senhaHash, $tipo, $admin]);
 
-            echo $success ? "Usuário cadastrado com sucesso!" : "Erro ao cadastrar usuário.";
+            if ($success) {
+                // Busca o ID do usuário recém-criado
+                $id = $pdo->lastInsertId();
+                
+                // Cria a sessão do usuário
+                $_SESSION['usuario'] = [
+                    'id' => $id,
+                    'nome' => $nome,
+                    'email' => $email,
+                    'tipo' => $tipo,
+                    'admin' => $admin
+                ];
+                
+                // Redireciona para a home
+                header("Location: ../public/home.php");
+                exit;
+            } else {
+                $_SESSION['erro'] = "Erro ao cadastrar usuário.";
+                header("Location: cadastro.php");
+                exit;
+            }
         }
     }
 }
+
+// Exibe mensagens de erro se existirem
+$erro = $_SESSION['erro'] ?? '';
+unset($_SESSION['erro']);
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +71,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="cadastro-header">
             <header>Cadastro</header>
         </div>
-        <form action="cadastro.php" method="POST"> <!-- Formulário com método POST -->
+        <?php if (!empty($erro)): ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($erro) ?></div>
+        <?php endif; ?>
+        <form action="cadastro.php" method="POST">
             <div class="input-box">
                 <input type="text" class="input-field" placeholder="Nome" name="nome" autocomplete="off" required>
             </div>
