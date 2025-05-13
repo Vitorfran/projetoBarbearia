@@ -60,7 +60,7 @@ require_once '../partes/header.php';
         <!-- ===========================================
             SEÇÃO DE SERVIÇOS
         =========================================== -->
-        <section class="home-secao-servicos">
+        <section id="home-secao-servicos" class="home-secao-servicos">
             <!-- Título da seção -->
             <h1 class="home-titulo-secao">NOSSOS SERVIÇOS</h1>
             
@@ -129,7 +129,7 @@ require_once '../partes/header.php';
         <!-- ===========================================
             SEÇÃO DE CONTATO
         =========================================== -->
-        <section class="home-secao-contato">
+        <section id="home-secao-contato" class="home-secao-contato">
             <!-- Título da seção -->
             <h1 class="home-titulo-secao">FALE COM A GENTE</h1>
             
@@ -193,7 +193,7 @@ require_once '../partes/header.php';
         <!-- ===========================================
             SEÇÃO DE PLANOS
         =========================================== -->
-        <section class="home-secao-planos">
+        <section id="home-secao-planos" class="home-secao-planos">
             <!-- Título da seção -->
             <h1 class="home-titulo-secao">NOSSOS PLANOS</h1>
             
@@ -242,7 +242,7 @@ require_once '../partes/header.php';
         <!-- ===========================================
             SEÇÃO DE DEPOIMENTOS
         =========================================== -->
-        <section class="home-secao-depoimentos">
+        <section id="home-secao-depoimentos" class="home-secao-depoimentos">
             <!-- Título da seção -->
             <h1 class="home-titulo-secao">O QUE DIZEM NOSSOS CLIENTES</h1>
             

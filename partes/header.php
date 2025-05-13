@@ -21,8 +21,8 @@ session_start();
             <ul>
                 <!-- Itens fixos para todos os usuários -->
                <li><a href="../public/home.php#home-secao-servicos">Serviços</a></li>
-                <li><a href="#">Contato</a></li>
-                <li><a href="planos.php">Planos</a></li>
+                <li><a href="../public/home.php#home-secao-contato">Contato</a></li>
+                <li><a href="../public/home.php#home-secao-planos">Planos</a></li>
                 
                 <?php if (isset($_SESSION['usuario'])): ?>
                     <!-- ITENS PARA USUÁRIO LOGADO -->
@@ -31,8 +31,8 @@ session_start();
                     <li><a href="logout.php">Sair</a></li>
                 <?php else: ?>
                     <!-- ITENS PARA USUÁRIO NÃO LOGADO -->
-                    <li><a href="login.php">Login</a></li>
-                    <li><a href="cadastro.php">Cadastro</a></li>
+                    <li><a href="../pages/login.php">Login</a></li>
+                    <li><a href="../pages/cadastro.php">Cadastro</a></li>
                 <?php endif; ?>
             </ul>
         </nav>
