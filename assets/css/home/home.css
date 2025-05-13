@@ -650,6 +650,16 @@ main {
     Dispositivos pequenos (celulares)
 ------------------------------------------- */
 @media (max-width: 480px) {
+
+    main{
+        padding: 7rem 1rem;
+    }
+    .home-secao-servicos{
+        margin-top: 10rem;
+    }
+    .home-titulo-secao{
+        margin-bottom: 3rem;
+    }
     /* Reduz tamanho do título */
     .home-titulo-destaque {
         font-size: 24px;
@@ -680,5 +690,8 @@ main {
     /* Ajusta tamanho do botão */
     .home-botao-enviar {
         padding: 0.8rem 1.5rem;
+    }
+    .home-conteudo-contato{
+        padding: 2rem;
     }
 }
