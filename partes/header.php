@@ -37,7 +37,7 @@ session_start();
                     <!-- ITENS PARA USUÁRIO LOGADO -->
                     <li><a href="meus_agendamentos.php">Meus Agendamentos</a></li>
                     <li><a href="minha_conta.php">Minha Conta</a></li>
-                    <li><a href="logout.php">Sair</a></li>
+                    <li><a href="../pages/logout.php">Sair</a></li>
                 <?php else: ?>
                     <!-- ITENS PARA USUÁRIO NÃO LOGADO -->
                     <li><a href="../pages/login.php">Login</a></li>
