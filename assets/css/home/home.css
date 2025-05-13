@@ -17,6 +17,31 @@ body {
 }
 
 /* ===========================================
+    TRANSITION EFFECTS
+=========================================== */
+html {
+    scroll-behavior: smooth;  /* Transição suave ao rolar a página */
+    scroll-padding-top: 100px; /* Espaço para o header fixo */
+}
+
+/* Efeito de fade-in para as seções */
+.home-secao-principal,
+.home-secao-servicos,
+.home-secao-contato,
+.home-secao-planos,
+.home-secao-depoimentos {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Classe que será adicionada via JavaScript quando a seção estiver visível */
+.secao-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===========================================
     ESTILOS DA ÁREA PRINCIPAL (MAIN)
 =========================================== */
 main {

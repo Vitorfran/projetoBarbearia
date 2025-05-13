@@ -267,5 +267,34 @@ require_once '../partes/header.php';
         </section>
 
     </main>
+
+    <script>
+// Observador de Intersecção para animar as seções
+document.addEventListener('DOMContentLoaded', function() {
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('secao-visible');
+            }
+        });
+    }, observerOptions);
+
+    // Seleciona todas as seções para observar
+    const sections = document.querySelectorAll('.home-secao-principal, .home-secao-servicos, .home-secao-contato, .home-secao-planos, .home-secao-depoimentos');
+    
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // Adiciona classe imediatamente para a primeira seção (hero)
+    if (sections[0]) {
+        sections[0].classList.add('secao-visible');
+    }
+});
+</script>
 </body>
 </html>
