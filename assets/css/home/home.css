@@ -127,7 +127,7 @@ main {
 .home-cartao-servico {
     background-color: var(--cor-secundaria);  /* Fundo laranja */
     border-radius: 25px;         /* Bordas arredondadas */
-    width: 20%;                 /* Largura proporcional */
+    width: 300px;                 /* Largura proporcional */
     height: auto;               /* Altura automática */
     padding: 2rem;              /* Espaçamento interno */
 }
@@ -581,8 +581,8 @@ main {
 
     /* Aumenta largura dos cards */
     .home-cartao-servico {
-        width: 80%;
-        margin: 0 auto;
+        width: 300px;
+        margin: auto auto;
     }
 
     /* Reduz margem superior */
