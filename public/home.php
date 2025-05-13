@@ -1,3 +1,7 @@
+<?php
+require_once '../partes/header.php';
+?>
+
 <!DOCTYPE html>
 <!-- ===========================================
     CABEÇALHO DO DOCUMENTO HTML
@@ -13,7 +17,8 @@
     
     <!-- Links para folhas de estilo -->
     <!-- <link rel="stylesheet" href="../assets/css/home/reset.css"> --> <!-- Reset CSS (comentado) -->
-    <link rel="stylesheet" href="../assets/css/fonts.css"> <!-- Estilos de fontes -->
+    <link rel="stylesheet" href="../assets/css/fonts.css"> 
+    <link rel="stylesheet" href="../assets/css/styleHeader.css"><!-- Estilos de fontes -->
     <link rel="stylesheet" href="../assets/css/home/home.css"> <!-- Estilos principais da página -->
 </head>
 
