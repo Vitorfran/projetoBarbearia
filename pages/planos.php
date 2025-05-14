@@ -11,6 +11,8 @@
 
   <h1>Planos Mensais</h1>
 
+
+
   <div class="planos">
     <div class="plano">
       <div class="tesoura">✂</div>
@@ -60,6 +62,10 @@
       <span class="sifrao">MasterCard •••• •••• •••• 0435</span>
     </div>
   </div>
+  <div class="voltar-container">
+  <a href="../public/home.php" class="btn-voltar">← Voltar</a>
+</div>
+
 
 </body>
 </html>
