@@ -55,11 +55,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 // Redireciona para a home
                 // REDIRECIONAMENTO BASEADO NO TIPO DE USUÁRIO
-                if ($tipo === 'profissional') {
-                    header("Location: telabarbeiro.php");
-                } else {
-                    header("Location: home_auth.php");
-                }
+              if ($tipo === 'profissional') {
+    header("Location: /projetoBarbearia/pages/telabarbeiro.php");
+} else {
+    header("Location: /projetoBarbearia/pages/home_auth.php");
+}
                 exit;
             } else {
                 $_SESSION['erro'] = "Erro ao cadastrar usuário.";

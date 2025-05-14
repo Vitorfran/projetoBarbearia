@@ -42,14 +42,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+// No login.php
 function redirectBasedOnUserType() {
     if ($_SESSION['usuario']['tipo'] === 'profissional') {
-        header('Location: telabarbeiro.php');
+        header('Location: /projetoBarbearia/pages/telabarbeiro.php');
     } else {
-        header('Location: home_auth.php');
+        header('Location: /projetoBarbearia/pages/home_auth.php');
     }
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
