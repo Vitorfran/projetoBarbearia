@@ -210,7 +210,7 @@ require_once '../partes/header.php';
                     <p class="home-preco-moeda">R$</p>
                     <p class="home-preco-valor">29/mês</p>
                     <p class="home-descricao-plano">1 corte por mês</p>
-                    <a href="#" class="home-botao home-botao-selecionar">Selecionar</a>
+                    <a href="../pages/planos.php" class="home-botao home-botao-selecionar">Selecionar</a>
                 </div>
 
                 <!-- ===========================================
@@ -222,7 +222,7 @@ require_once '../partes/header.php';
                     <p class="home-preco-valor">59/mês</p>
                     <p class="home-descricao-plano">2 cortes por mês</p>
                     <p class="home-descricao-plano">+ Sombrancelha</p>
-                    <a href="#" class="home-botao home-botao-selecionar">Selecionar</a>
+                    <a href="../pages/planos.php" class="home-botao home-botao-selecionar">Selecionar</a>
                 </div>
 
                 <!-- ===========================================
@@ -234,7 +234,7 @@ require_once '../partes/header.php';
                     <p class="home-preco-valor">89/mês</p>
                     <p class="home-descricao-plano">4 cortes por mês</p>
                     <p class="home-descricao-plano">+ Barba & Sombrancelha</p>
-                    <a href="#" class="home-botao home-botao-selecionar">Selecionar</a>
+                    <a href="../pages/planos.php" class="home-botao home-botao-selecionar">Selecionar</a>
                 </div>
             </div>
         </section>
