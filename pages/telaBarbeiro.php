@@ -1,5 +1,42 @@
 <?php
 session_start();
+require_once '../config/database.php';
+
+// Verifica se o usuário está logado e é um profissional
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'profissional') {
+    header('Location: ../public/home.php');
+    exit;
+}
+
+// Obtém o ID do profissional logado
+$profissional_id = $_SESSION['usuario']['id'];
+
+// Busca os agendamentos para este profissional
+$stmt = $pdo->prepare("
+    SELECT 
+        a.id as agendamento_id,
+        u.nome as cliente_nome,
+        s.nome as servico_nome,
+        a.data_hora_inicio,
+        a.status
+    FROM agendamentos a
+    JOIN usuarios u ON a.cliente_id = u.id
+    JOIN servicos s ON a.servico_id = s.id
+    WHERE a.profissional_id = ?
+    ORDER BY a.data_hora_inicio ASC
+");
+$stmt->execute([$profissional_id]);
+$agendamentos = $stmt->fetchAll();
+
+// Processa o formulário de ausência se enviado
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['motivo'])) {
+    $motivo = $_POST['motivo'];
+    // Aqui você pode implementar a lógica para registrar a ausência
+    // Por exemplo, enviar um email ou registrar no banco de dados
+    $_SESSION['mensagem'] = "Ausência registrada com sucesso!";
+    header('Location: telabarbeiro.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -12,59 +49,126 @@ session_start();
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <style>
+    /* Estilos adicionais para melhorar a visualização */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    .table th, .table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    .table th {
+        background-color: #f2f2f2;
+    }
+    .status-pendente {
+        color: #FFA500;
+    }
+    .status-confirmado {
+        color: #008000;
+    }
+    .status-cancelado {
+        color: #FF0000;
+    }
+    .ausencia {
+        margin-top: 40px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+    }
+    .ausencia textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+    }
+    .ausencia button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #FFB22C;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .mensagem {
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 4px;
+    }
+    .mensagem.sucesso {
+        background-color: #d4edda;
+        color: #155724;
+    }
+  </style>
 </head>
 <body>
   <header>
       <div class="logo">
           <img src="../assets/imgs/header/Cortai.png" alt="Cortai">      
-            <h1>Olá, Lucas!</h1>
+          <h1>Olá, <?= htmlspecialchars($_SESSION['usuario']['nome']) ?></h1>
       </div>
       <nav>
-        <a href="#">Agenda de clientes</a>
-        <a href="#">Declarar Ausência</a>
+        <a href="telabarbeiro.php">Agenda de clientes</a>
+        <a href="#ausencia">Declarar Ausência</a>
+        <a href="logout.php">Sair</a>
       </nav>
-    </div>
   </header>
 
   <main>
+    <?php if (isset($_SESSION['mensagem'])): ?>
+        <div class="mensagem sucesso"><?= htmlspecialchars($_SESSION['mensagem']) ?></div>
+        <?php unset($_SESSION['mensagem']); ?>
+    <?php endif; ?>
+
     <section class="agenda">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>cliente</th>
-            <th>serviço</th>
-            <th>data e hora</th>
-            <th>presença</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>####</td>
-            <td>####</td>
-            <td>####</td>
-            <td><span class="icon">🔖</span></td>
-          </tr>
-          <tr>
-            <td>####</td>
-            <td>####</td>
-            <td>####</td>
-            <td><span class="icon">🔖</span></td>
-          </tr>
-          <tr>
-            <td>####</td>
-            <td>####</td>
-            <td>####</td>
-            <td><span class="icon">🔖</span></td>
-          </tr>
-        </tbody>
-      </table>
+      <h2>Agenda de Clientes</h2>
+      
+      <?php if (empty($agendamentos)): ?>
+        <p>Nenhum agendamento encontrado.</p>
+      <?php else: ?>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Serviço</th>
+              <th>Data e Hora</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($agendamentos as $agendamento): ?>
+              <tr>
+                <td><?= htmlspecialchars($agendamento['cliente_nome']) ?></td>
+                <td><?= htmlspecialchars($agendamento['servico_nome']) ?></td>
+                <td><?= date('d/m/Y H:i', strtotime($agendamento['data_hora_inicio'])) ?></td>
+                <td class="status-<?= strtolower($agendamento['status']) ?>">
+                  <?= htmlspecialchars($agendamento['status']) ?>
+                </td>
+                <td>
+                  <form method="POST" action="atualizar_status.php" style="display: inline;">
+                    <input type="hidden" name="agendamento_id" value="<?= $agendamento['agendamento_id'] ?>">
+                    <button type="submit" name="acao" value="confirmar" class="btn-confirmar">Confirmar</button>
+                    <button type="submit" name="acao" value="cancelar" class="btn-cancelar">Cancelar</button>
+                  </form>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      <?php endif; ?>
     </section>
 
-    <section class="ausencia">
+    <section class="ausencia" id="ausencia">
       <h2>Declarar Ausência</h2>
-      <form>
+      <form method="POST">
         <label for="motivo">Motivo</label>
-        <textarea id="motivo" name="motivo" placeholder="Digite aqui..."></textarea>
+        <textarea id="motivo" name="motivo" placeholder="Digite aqui o motivo da ausência..." required></textarea>
         <button type="submit">Enviar</button>
       </form>
     </section>

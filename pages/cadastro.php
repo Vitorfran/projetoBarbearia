@@ -1,5 +1,5 @@
 <?php
-session_start(); // Adicione esta linha no início do arquivo
+session_start();
 require_once __DIR__ . '/../config/database.php';
 
 // PROCESSAMENTO DO FORMULÁRIO
@@ -54,7 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ];
 
                 // Redireciona para a home
-                header("Location: ../pages/home_auth.php");
+                // REDIRECIONAMENTO BASEADO NO TIPO DE USUÁRIO
+                if ($tipo === 'profissional') {
+                    header("Location: telabarbeiro.php");
+                } else {
+                    header("Location: home_auth.php");
+                }
                 exit;
             } else {
                 $_SESSION['erro'] = "Erro ao cadastrar usuário.";

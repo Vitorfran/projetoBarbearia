@@ -1,17 +1,16 @@
 <?php
+
 require_once '../partes/header.php';
 
-
-// Verifica se a variável de sessão 'usuario' está definida.
-// Se não estiver, significa que o usuário não está logado.
-if (!isset($_SESSION['usuario'])) {
-    // Redireciona o usuário para a página de login (ou a home pública).
-    header('Location: ../public/home.php');
-    exit; // Certifique-se de sair do script após o redirecionamento.
+// Verifica se o usuário está logado e é cliente
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'cliente') {
+    if (isset($_SESSION['usuario']) && $_SESSION['usuario']['tipo'] === 'profissional') {
+        header('Location: telabarbeiro.php');
+    } else {
+        header('Location: ../public/home.php');
+    }
+    exit;
 }
-
-// Se a sessão 'usuario' estiver definida, o usuário está logado e pode
-// continuar a visualizar o conteúdo de home_auth.php.
 ?>
 
 <!DOCTYPE html>

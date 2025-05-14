@@ -2,8 +2,12 @@
 session_start();
 require_once __DIR__ . '/../config/database.php';
 
+// Se já estiver logado, redireciona de acordo com o tipo
+if (isset($_SESSION['usuario'])) {
+    redirectBasedOnUserType();
+}
 
-// Verifica se o formulário foi submetido
+// Processa o formulário de login
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
     $senha = $_POST['senha'] ?? '';
@@ -30,13 +34,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
         
         // Redireciona para a página apropriada
-        header('Location: ../pages/home_auth.php');
-        exit;
+        redirectBasedOnUserType();
     } else {
         $_SESSION['erro'] = "E-mail ou senha incorretos!";
         header('Location: login.php');
         exit;
     }
+}
+
+function redirectBasedOnUserType() {
+    if ($_SESSION['usuario']['tipo'] === 'profissional') {
+        header('Location: telabarbeiro.php');
+    } else {
+        header('Location: home_auth.php');
+    }
+    exit;
 }
 ?>
 
