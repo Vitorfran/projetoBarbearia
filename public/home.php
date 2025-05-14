@@ -83,7 +83,7 @@ require_once '../partes/header.php';
                     <p class="home-descricao-servico">Transforme seu visual com cortes modernos e personalizados, feitos para destacar sua personalidade e estilo único.</p>
                     
                     <!-- Botão de ação -->
-                    <a href="#" class="home-botao home-botao-agendar">AGENDE</a>
+                    <a href="../pages/login.php" class="home-botao home-botao-agendar">AGENDE</a>
                 </div>
 
                 <!-- ===========================================
@@ -102,7 +102,7 @@ require_once '../partes/header.php';
                     <p class="home-descricao-servico">Transforme seu visual com cortes modernos e personalizados, feitos para destacar sua personalidade e estilo único.</p>
                     
                     <!-- Botão de ação -->
-                    <a href="#" class="home-botao home-botao-agendar">AGENDE</a>
+                    <a href="#../pages/login.php" class="home-botao home-botao-agendar">AGENDE</a>
                 </div>
 
                 <!-- ===========================================
@@ -121,7 +121,7 @@ require_once '../partes/header.php';
                     <p class="home-descricao-servico">Transforme seu visual com cortes modernos e personalizados, feitos para destacar sua personalidade e estilo único.</p>
                     
                     <!-- Botão de ação -->
-                    <a href="#" class="home-botao home-botao-agendar">AGENDE</a>
+                    <a href="../pages/login.php" class="home-botao home-botao-agendar">AGENDE</a>
                 </div>
             </div>
         </section>
