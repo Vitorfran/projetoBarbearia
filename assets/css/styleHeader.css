@@ -17,15 +17,23 @@ header {
   background-color: #FFB22C;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-.menu-toggle{
+
+.menu-toggle {
   display: none;
   cursor: pointer;
   font-size: 24px;
   color: #333;
   padding: 10px;
-
 }
 
+.menu-hamb {
+  width: 30px;
+}
+
+/* Esconde o botão de fechar (X) em telas grandes */
+.close-btn {
+  display: none !important;
+}
 
 nav ul {
   display: flex;
@@ -52,61 +60,59 @@ nav ul li a:hover {
 
 @media (max-width: 768px) {
   .menu-toggle {
-      display: block;
+    display: block;
   }
-  .menu-hamb{
-    width: 30px;
-  }
-  header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+  header {
     padding: 8px 60px;
-    background-color: #FFB22C;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
-  
+
   nav {
-      position: fixed;
-      top: 0;
-      left: 100%;
-      width: 70%;
-      height: 100vh;
-      background: #FFB22C;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      z-index: 1000;
-      padding-top: 60px;
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 70%;
+    height: 100vh;
+    background: #FFB22C;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    padding-top: 60px;
   }
-  
+
   nav.active {
-      left: 0;
+    left: 0;
   }
-  
+
   nav ul {
-      flex-direction: column;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 20px;
   }
-  
+
   .overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 999;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
   }
-  
+
   .overlay.active {
-      display: block;
+    display: block;
   }
-  
+
+  /* Exibe o botão de fechar (X) no menu mobile */
   .close-btn {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      font-size: 24px;
-      cursor: pointer;
+    display: block !important;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
   }
 }

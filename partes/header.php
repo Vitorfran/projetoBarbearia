@@ -11,6 +11,7 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -24,21 +25,26 @@ session_start();
         
         <div class="overlay"></div>
 
-
         <nav>
-        <span class="close-btn"><i class="fas fa-times"></i></span>
+            <span class="close-btn"><i class="fas fa-times"></i></span>
             <ul>
                 <!-- Itens fixos para todos os usuários -->
-               <li><a href="../public/home.php#home-secao-servicos">Serviços</a></li>
-                <li><a href="../public/home.php#home-secao-contato">Contato</a></li>
-                <li><a href="../public/home.php#home-secao-planos">Planos</a></li>
-                
                 <?php if (isset($_SESSION['usuario'])): ?>
-                    <!-- ITENS PARA USUÁRIO LOGADO -->
-                    <li><a href="meus_agendamentos.php">Meus Agendamentos</a></li>
-                    <li><a href="minha_conta.php">Minha Conta</a></li>
+                    <!-- Links para versão autenticada -->
+                    <li><a href="../pages/home_auth.php#home-secao-servicos">Serviços</a></li>
+                    <li><a href="../pages/home_auth.php#home-secao-contato">Contato</a></li>
+                    <li><a href="../pages/home_auth.php#home-secao-planos">Planos</a></li>
+                    
+                    <!-- ITENS EXCLUSIVOS PARA USUÁRIO LOGADO -->
+                    <li><a href="../pages/meus_agendamentos.php">Meus Agendamentos</a></li>
+                    <li><a href="../pages/minha_conta.php">Minha Conta</a></li>
                     <li><a href="../pages/logout.php">Sair</a></li>
                 <?php else: ?>
+                    <!-- Links para versão pública -->
+                    <li><a href="../public/home.php#home-secao-servicos">Serviços</a></li>
+                    <li><a href="../public/home.php#home-secao-contato">Contato</a></li>
+                    <li><a href="../public/home.php#home-secao-planos">Planos</a></li>
+                    
                     <!-- ITENS PARA USUÁRIO NÃO LOGADO -->
                     <li><a href="../pages/login.php">Login</a></li>
                     <li><a href="../pages/cadastro.php">Cadastro</a></li>
@@ -69,7 +75,7 @@ session_start();
                 overlay.classList.remove('active');
             });
             
-            // Fechar o menu ao clicar em um link (opcional)
+            // Fechar o menu ao clicar em um link
             const navLinks = document.querySelectorAll('nav ul li a');
             navLinks.forEach(link => {
                 link.addEventListener('click', function() {
@@ -79,3 +85,5 @@ session_start();
             });
         });
     </script>
+</body>
+</html>

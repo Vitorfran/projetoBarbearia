@@ -7,7 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'] ?? '';
     $email = $_POST['email'] ?? '';
     $senha = $_POST['senha'] ?? '';
-    $tipo = $_POST['perfil'] ?? 'cliente'; // Pega o tipo do formulário
+    $perfil = $_POST['perfil'] ?? 'cliente';
+    $tipo = ($perfil === 'barbeiro') ? 'profissional' : 'cliente';
     $admin = false;
 
     if (empty($nome) || empty($email) || empty($senha)) {
@@ -31,6 +32,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Busca o ID do usuário recém-criado
                 $id = $pdo->lastInsertId();
                 
+                // Se o usuário for um barbeiro, associamos ele a todos os serviços disponíveis
+                if ($tipo === 'profissional') {
+                    // Obter todos os serviços disponíveis
+                    $servicos = $pdo->query("SELECT id FROM servicos")->fetchAll();
+
+                    // Inserir o relacionamento entre o barbeiro e todos os serviços
+                    foreach ($servicos as $servico) {
+                        $stmt = $pdo->prepare("INSERT INTO profissionais_servicos (profissional_id, servico_id) VALUES (?, ?)");
+                        $stmt->execute([$id, $servico['id']]);
+                    }
+                }
+
                 // Cria a sessão do usuário
                 $_SESSION['usuario'] = [
                     'id' => $id,
@@ -39,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'tipo' => $tipo,
                     'admin' => $admin
                 ];
-                
+
                 // Redireciona para a home
                 header("Location: ../pages/home_auth.php");
                 exit;
