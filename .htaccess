@@ -1,0 +1,52 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Redirecionar www para não-www (opcional)
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+    # Remover extensão .php das URLs
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.php -f
+    RewriteRule ^(.*)$ $1.php [L]
+
+    # URLs amigáveis para páginas principais
+    RewriteRule ^login$ pages/login.php [L]
+    RewriteRule ^cadastro$ pages/cadastro.php [L]
+    RewriteRule ^agendar$ pages/agendamento.php [L]
+    RewriteRule ^meus-agendamentos$ pages/meus_agendamentos.php [L]
+    RewriteRule ^area-do-barbeiro$ pages/telabarbeiro.php [L]
+    RewriteRule ^planos$ pages/planos.php [L]
+
+    # Proteger arquivos sensíveis
+    <FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql)$">
+        Order Allow,Deny
+        Deny from all
+    </FilesMatch>
+
+    # Proteger diretórios
+    Options -Indexes
+
+    # Compressão GZIP para melhor performance
+    <IfModule mod_deflate.c>
+        AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
+    </IfModule>
+
+    # Cache para melhor performance
+    <IfModule mod_expires.c>
+        ExpiresActive On
+        ExpiresByType image/jpg "access plus 1 year"
+        ExpiresByType image/jpeg "access plus 1 year"
+        ExpiresByType image/gif "access plus 1 year"
+        ExpiresByType image/png "access plus 1 year"
+        ExpiresByType text/css "access plus 1 month"
+        ExpiresByType application/pdf "access plus 1 month"
+        ExpiresByType text/javascript "access plus 1 month"
+        ExpiresByType text/html "access plus 1 hour"
+    </IfModule>
+</IfModule>
+
+# Página de erro personalizada
+ErrorDocument 404 /404.php
+ErrorDocument 403 /403.php
