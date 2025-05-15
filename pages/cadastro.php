@@ -120,5 +120,8 @@ unset($_SESSION['erro']);
             <p>Já tem uma conta? <a href="../pages/login.php">Entrar</a></p>
         </div>
     </div>
+
+    <?php require_once '../partes/footer.php';?>
+
 </body>
 </html>

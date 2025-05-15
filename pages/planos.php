@@ -66,6 +66,8 @@
   <a href="../public/home.php" class="btn-voltar">← Voltar</a>
 </div>
 
+<?php require_once '../partes/footer.php';?>
+
 
 </body>
 </html>

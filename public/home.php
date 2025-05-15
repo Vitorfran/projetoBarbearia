@@ -1,6 +1,11 @@
 <?php
 require_once '../partes/header.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
+
+
 
 <!DOCTYPE html>
 <!-- ===========================================
@@ -296,5 +301,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+
+<?php require_once '../partes/footer.php'; ?>
+
 </body>
 </html>

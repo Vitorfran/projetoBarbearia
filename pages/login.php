@@ -99,5 +99,9 @@ function redirectBasedOnUserType() {
             <p>Não tem uma conta? <a href="cadastro.php">Criar conta</a></p>
         </div>
     </div>
+    
+      <?php require_once '../partes/footer.php'; ?>
+    
+
 </body>
 </html>
