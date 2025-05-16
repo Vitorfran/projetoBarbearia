@@ -41,6 +41,34 @@ html {
     transform: translateY(0);
 }
 
+
+nav ul li a.active {
+    color: #fff !important;
+    font-weight: 600 !important;
+    position: relative;
+}
+
+nav ul li a.active:after {
+    content: '';
+    position: absolute;
+    width: 100% !important;
+    height: 2px;
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s;
+}
+
+/* Para o menu mobile */
+@media (max-width: 768px) {
+    nav ul li a.active {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        padding: 5px 10px;
+    }
+}
+
+
 /* ===========================================
     ESTILOS DA ÁREA PRINCIPAL (MAIN)
 =========================================== */

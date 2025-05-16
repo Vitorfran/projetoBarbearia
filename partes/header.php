@@ -84,6 +84,22 @@ session_start();
                 });
             });
         });
+
+
+
+// ATIVA LINK ATIVO EM TODAS AS PÁGINAS
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPage = window.location.pathname.split('/').pop();
+    const links = document.querySelectorAll('nav ul li a');
+    
+    links.forEach(link => {
+        const linkPage = link.getAttribute('href').split('/').pop();
+        if (linkPage === currentPage) {
+            link.classList.add('active');
+        }
+    });
+});
+
     </script>
 </body>
 </html>
