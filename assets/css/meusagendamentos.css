@@ -1,0 +1,216 @@
+ 
+    /* HERDA O ESTILO DO HEADER.CSS */
+    /* Mantém todos os estilos originais do header */
+    
+    /* AJUSTES ESPECÍFICOS PARA MEUS AGENDAMENTOS */
+    main {
+      padding: 40px 80px; /* Mesmo padding horizontal do header */
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    /* TÍTULO DA PÁGINA */
+    .titulo-pagina {
+      color: #333;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      font-weight: 600;
+      text-align: center;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 80px;
+    background-color: #FFB22C;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+  }
+
+  body > header .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  body > header .logo img {
+    height: 40px;
+    width: auto;
+  }
+
+  body > header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+  }
+
+  body > header nav ul li {
+    margin: 0;
+  }
+
+  body > header nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s;
+    padding: 5px 0;
+    position: relative;
+  }
+
+  body > header nav ul li a:hover {
+    color: #fff;
+  }
+
+  body > header nav ul li a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s;
+  }
+
+  body > header nav ul li a:hover:after {
+    width: 100%;
+  }
+
+  /* DESTAQUE PARA O LINK ATIVO */
+  body > header nav ul li a[href="meus_agendamentos.php"] {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  body > header nav ul li a[href="meus_agendamentos.php"]:after {
+    width: 100%;
+  }
+
+  /* RESPONSIVIDADE */
+  @media (max-width: 768px) {
+    body > header {
+      padding: 15px 20px;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    body > header nav ul {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+  }
+    
+    /* TABELA DE AGENDAMENTOS */
+    .tabela-agendamentos {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    
+    .tabela-agendamentos th {
+      background-color: #FFB22C;
+      color: #333;
+      padding: 15px;
+      text-align: left;
+      font-weight: 500;
+      font-family: "Poppins", sans-serif;
+    }
+    
+    .tabela-agendamentos td {
+      padding: 15px;
+      border-bottom: 1px solid #f0f0f0;
+      color: #333;
+      font-family: Arial, sans-serif;
+    }
+    
+    .tabela-agendamentos tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .tabela-agendamentos tr:hover {
+      background-color: #fffaf0;
+    }
+    
+    /* STATUS */
+    .status {
+      font-weight: 500;
+      padding: 5px 10px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    
+    .status-pendente {
+      color: #e67e22;
+      background-color: #fef5e7;
+    }
+    
+    .status-confirmado {
+      color: #27ae60;
+      background-color: #e8f8ef;
+    }
+    
+    .status-cancelado {
+      color: #e74c3c;
+      background-color: #fdedec;
+    }
+    
+    /* BOTÕES */
+    .btn-cancelar {
+      padding: 8px 16px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: all 0.3s;
+      font-family: "Poppins", sans-serif;
+    }
+    
+    .btn-cancelar:hover {
+      background-color: #c0392b;
+    }
+    
+    /* MENSAGENS */
+    .mensagem-flash {
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+      font-size: 0.95em;
+      text-align: center;
+    }
+    
+    .mensagem-sucesso {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      main {
+        padding: 20px;
+      }
+      
+      .tabela-agendamentos {
+        display: block;
+        overflow-x: auto;
+      }
+      
+      .tabela-agendamentos th, 
+      .tabela-agendamentos td {
+        padding: 10px;
+      }
+    }

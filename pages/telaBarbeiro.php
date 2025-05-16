@@ -104,6 +104,97 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['motivo'])) {
         background-color: #d4edda;
         color: #155724;
     }
+
+      body > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 80px;
+    background-color: #FFB22C;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+  }
+
+  body > header .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  body > header .logo img {
+    height: 40px;
+    width: auto;
+  }
+
+  body > header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+  }
+
+  body > header nav ul li {
+    margin: 0;
+  }
+
+  body > header nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s;
+    padding: 5px 0;
+    position: relative;
+  }
+
+  body > header nav ul li a:hover {
+    color: #fff;
+  }
+
+  body > header nav ul li a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s;
+  }
+
+  body > header nav ul li a:hover:after {
+    width: 100%;
+  }
+
+  /* DESTAQUE PARA O LINK ATIVO */
+  body > header nav ul li a[href="meus_agendamentos.php"] {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  body > header nav ul li a[href="meus_agendamentos.php"]:after {
+    width: 100%;
+  }
+
+  /* RESPONSIVIDADE */
+  @media (max-width: 768px) {
+    body > header {
+      padding: 15px 20px;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    body > header nav ul {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+  }
+    
   </style>
 </head>
 <body>
