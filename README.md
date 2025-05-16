@@ -1,6 +1,6 @@
-# 💈 Projeto Barbearia CORTAÍ
+# 💈 Projeto Barbearia CORRAH
 
-Este é um sistema web desenvolvido para uma barbearia fictícia chamado **CORTAÍ**, com o objetivo de facilitar o agendamento de cortes de cabelo, barbas e serviços relacionados. O projeto foi desenvolvido durante as aulas como atividade prática.
+Este é um sistema web desenvolvido para uma barbearia fictícia chamado **CORRAH**, com o objetivo de facilitar o agendamento de cortes de cabelo, barbas e serviços relacionados. O projeto foi desenvolvido durante as aulas como atividade prática.
 
 ## 👨‍💻 Desenvolvedores
 
@@ -42,7 +42,7 @@ Este é um sistema web desenvolvido para uma barbearia fictícia chamado **CORTA
   └── agendamento.php
   └── meus_agendamentos.php
 
-📥 [Clique aqui para baixar o arquivo SQL do banco de dados](./projetobarbearia.sql)
+[projetobarbearia.sql](./projetobarbearia.sql) (arquivo de criação do banco de dados)
 ```
 
 ---
@@ -88,13 +88,13 @@ http://localhost/nome-do-projeto/pages/home.php
 ## 📷 Imagens do Projeto
 
 ### Tela inicial:
-![Tela Inicial](./imgs/tela_inicial.png)
+![Tela Inicial](imgs/tela_inicial.png)
 
 ### Tela de agendamentos:
-![Tela de Agendamentos](./imgs/tela_agendamentos.png)
+![Tela de Agendamentos](imgs/tela_agendamentos.png)
 
 ---
 
 ## 📌 Licença
 
-Projeto acadêmico.
+Projeto acadêmico sem fins lucrativos.
