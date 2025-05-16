@@ -42,7 +42,7 @@ Este é um sistema web desenvolvido para uma barbearia fictícia chamado **CORRA
   └── agendamento.php
   └── meus_agendamentos.php
 
-[projetobarbearia.sql](./projetobarbearia.sql) (arquivo de criação do banco de dados)
+[projetoBarbearia.sql](./projetobarbearia.sql) (arquivo de criação do banco de dados)
 ```
 
 ---
@@ -85,15 +85,6 @@ http://localhost/nome-do-projeto/pages/home.php
 
 ---
 
-## 📷 Imagens do Projeto
-
-### Tela inicial:
-![Tela Inicial](imgs/tela_inicial.png)
-
-### Tela de agendamentos:
-![Tela de Agendamentos](imgs/tela_agendamentos.png)
-
----
 
 ## 📌 Licença
 
