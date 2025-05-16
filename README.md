@@ -18,6 +18,7 @@ Este é um sistema web desenvolvido para uma barbearia fictícia chamado **CORRA
 - **JavaScript** – Funcionalidades interativas
 - **PHP** – Backend para lógica e conexão com o banco de dados
 - **MySQL** – Banco de dados relacional
+- Link do Prototipo do Figma Feito Pelos Membros Do Grupo:https://www.figma.com/design/O4ZEcYHiuy7w7fj7j4PNHQ/barbearia--Community-?node-id=0-1&p=f&t=OiaZZtVdLieETfIf-0
 
 ---
 
