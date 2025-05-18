@@ -2,6 +2,7 @@
 
 require_once '../partes/header.php';
 
+
 // Verifica se o usuário está logado e é cliente
 if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'cliente') {
     if (isset($_SESSION['usuario']) && $_SESSION['usuario']['tipo'] === 'profissional') {
@@ -37,6 +38,9 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'cliente') 
     CORPO DA PÁGINA
 =========================================== -->
 <body class="home-corpo">
+    
+        <h1 class="home-titulo-bemvindo" >Olá, <?= htmlspecialchars($_SESSION['usuario']['nome'])?></h1>
+
         <section id="home-secao-servicos" class="home-secao-servicos">
           
             <h1 class="home-titulo-secao">NOSSOS SERVIÇOS</h1>

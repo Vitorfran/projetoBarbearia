@@ -78,5 +78,8 @@ unset($_SESSION['erro'], $_SESSION['sucesso']);
       </div>
     </form>
   </div>
+
+  <?php require_once '../partes/footer.php'; ?>
+
 </body>
 </html>

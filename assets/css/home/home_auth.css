@@ -151,7 +151,7 @@ main {
     SEÇÃO DE SERVIÇOS
 =========================================== */
 .home-secao-servicos {
-    margin-top: 15rem;  /* Grande margem superior para separar seções */
+    margin-top: 10rem;  /* Grande margem superior para separar seções */
 }
 
 /* -------------------------------------------
@@ -172,6 +172,13 @@ main {
     display: flex;              /* Layout flexível */
     flex-direction: row;         /* Alinhamento em linha */
     justify-content: space-evenly; /* Distribuição uniforme */
+}
+
+.home-titulo-bemvindo{
+    padding: 60px 0 0 50px;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 /* -------------------------------------------
