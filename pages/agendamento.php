@@ -46,7 +46,7 @@ unset($_SESSION['erro'], $_SESSION['sucesso']);
       <div class="card-servico">
         <div class="cabecalho-card">
           <label for="servico">Serviço:</label>
-          <select name="servico_id" required>
+          <select name="servico_id" style="margin:8px; border-radius:5px; background-color: #ffd074; border: none;"  required>
             <?php foreach ($servicos as $servico): ?>
               <option value="<?= $servico['id'] ?>">
                 <?= htmlspecialchars($servico['nome']) ?> - R$<?= number_format($servico['preco'], 2, ',', '.') ?>
