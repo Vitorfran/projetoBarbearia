@@ -5,10 +5,11 @@ require_once '../../config/database.php';// Correct path to your database connec
 // --- IMPORTANT: AUTHENTICATION AND AUTHORIZATION ---
 // This is crucial. Ensure your $_SESSION['usuario'] has the 'admin' flag or 'tipo'
 // For example, if your 'tipo' column determines admin status:
-// if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'admin') {
-//     $_SESSION['mensagem'] = "Acesso negado. Você não tem permissão para acessar esta página.";
-//     header('Location: ../pages/login.php'); // Redirect to login or an unauthorized page
-//     exit;
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['admin'] != 1) {
+    $_SESSION['mensagem'] = "Acesso negado. Você não tem permissão para acessar esta página.";
+    header('Location: ../pages/login.php');
+    exit;
+}
 // }
 // --- END AUTHENTICATION ---
 

@@ -18,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Busca o usuário no banco de dados
-    $stmt = $pdo->prepare("SELECT id, nome, senha, tipo FROM usuarios WHERE email = ?");
+    // Busca o usuário no banco de dados (incluindo o campo 'admin')
+    $stmt = $pdo->prepare("SELECT id, nome, senha, tipo, admin FROM usuarios WHERE email = ?");
     $stmt->execute([$email]);
     $usuario = $stmt->fetch();
 
@@ -30,7 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'id' => $usuario['id'],
             'nome' => $usuario['nome'],
             'email' => $email,
-            'tipo' => $usuario['tipo']
+            'tipo' => $usuario['tipo'],
+            'admin' => $usuario['admin'] // Adiciona o status de admin à sessão
         ];
         
         // Redireciona para a página apropriada
@@ -42,16 +43,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// No login.php
+// Função para redirecionar baseado no tipo de usuário
 function redirectBasedOnUserType() {
-    if ($_SESSION['usuario']['tipo'] === 'profissional') {
+    if ($_SESSION['usuario']['admin'] == 1) {
+        // Se for admin, redireciona para a tela de admin
+        header('Location: /projetoBarbearia/pages/tela_admin.php');
+    } elseif ($_SESSION['usuario']['tipo'] === 'profissional') {
         header('Location: /projetoBarbearia/pages/telabarbeiro.php');
     } else {
         header('Location: /projetoBarbearia/pages/home_auth.php');
     }
     exit;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +64,8 @@ function redirectBasedOnUserType() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | CortAí</title>
     <link rel="stylesheet" href="../assets/css/login.css">
+    <!-- Adicione o Bootstrap CSS se estiver usando -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="cadastro-box">
@@ -100,8 +105,9 @@ function redirectBasedOnUserType() {
         </div>
     </div>
     
-      <?php require_once '../partes/footer.php'; ?>
+    <?php require_once '../partes/footer.php'; ?>
     
-
+    <!-- Adicione o Bootstrap JS se estiver usando -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
