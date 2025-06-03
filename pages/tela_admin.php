@@ -289,7 +289,7 @@ if (isset($_SESSION['mensagem'])) {
                                                     // Fetch plano name if id_plano exists
                                                     $plano_nome = 'N/A';
                                                     if ($usuario['id_plano']) {
-                                                        $stmt_plano = $pdo->prepare("SELECT nome FROM planos WHERE id = ?");
+                                                        $stmt_plano = $pdo->prepare("SELECT nome FROM planos WHERE id_plano = ?");
                                                         $stmt_plano->execute([$usuario['id_plano']]);
                                                         $plano = $stmt_plano->fetch(PDO::FETCH_ASSOC);
                                                         if ($plano) {
