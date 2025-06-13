@@ -15,7 +15,7 @@ body{
     background: #F7F7F7;
 }
 
-.cadastro-box{
+.cadastro-box2{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -29,7 +29,7 @@ body{
     margin: 20px 0 40px 0;
 }
 
-.cadastro-header header{
+h1{
     color: #FFB22C;
     font-size: 30px;
     font-weight: 600;

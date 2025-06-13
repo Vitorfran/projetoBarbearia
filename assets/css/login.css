@@ -28,8 +28,7 @@ body{
     text-align: center;
     margin: 20px 0 40px 0;
 }
-
-.cadastro-header header{
+.titulo{
     color: #FFB22C;
     font-size: 30px;
     font-weight: 600;

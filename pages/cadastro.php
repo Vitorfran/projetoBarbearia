@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require_once __DIR__ . '/../config/database.php';
 
 // PROCESSAMENTO DO FORMULÁRIO
@@ -85,9 +85,12 @@ unset($_SESSION['erro']);
     <title>Cadastro | CortAí</title>
 </head>
 <body>
-    <div class="cadastro-box">
+     <?php
+        require_once __DIR__ . '/../partes/header.php'
+    ?>
+    <div class="cadastro-box2">
         <div class="cadastro-header">
-            <header>Cadastro</header>
+            <h1>Cadastro</h1>
         </div>
         <?php if (!empty($erro)): ?>
             <div class="alert alert-danger"><?= htmlspecialchars($erro) ?></div>

@@ -52,6 +52,7 @@ main {
     SEÇÃO PRINCIPAL (HERO SECTION)
 =========================================== */
 .home-secao-principal {
+    margin-top: 15rem;
     display: flex;                   /* Layout flexível */
     flex-direction: row;             /* Alinhamento em linha */
     align-items: center;             /* Centraliza verticalmente */
@@ -123,7 +124,7 @@ main {
     SEÇÃO DE SERVIÇOS
 =========================================== */
 .home-secao-servicos {
-    margin-top: 15rem;  /* Grande margem superior para separar seções */
+    margin-top: 1rem;  /* Grande margem superior para separar seções */
 }
 
 /* -------------------------------------------

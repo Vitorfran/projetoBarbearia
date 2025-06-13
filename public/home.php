@@ -33,6 +33,75 @@ if (session_status() === PHP_SESSION_NONE) {
 <body class="home-corpo">
     <!-- Conteúdo principal da página -->
     <main class="home-conteudo-principal">
+        
+                <!-- ===========================================
+                    SEÇÃO DE SERVIÇOS
+                =========================================== -->
+                <section id="home-secao-servicos" class="home-secao-servicos">
+                    <!-- Título da seção -->
+                    <h1 class="home-titulo-secao">NOSSOS SERVIÇOS</h1>
+                    
+                    <!-- Container dos cards de serviços -->
+                    <div class="cards">
+                        <!-- ===========================================
+                            CARD 1 - CORTES MODERNOS
+                        =========================================== -->
+                        <div class="home-cartao-servico">
+                            <!-- Cabeçalho do card (título + ícone) -->
+                            <div class="home-cartao-servico-titulo">
+                                <h3 class="home-titulo-servico">CORTES MODERNOS</h3>
+                                <img src="../assets/imgs/home/imagem-home-tesoura.png" alt="Tesoura" class="home-icone-servico">
+                            </div>
+                            
+                            <!-- Imagem do serviço -->
+                            <img src="../assets/imgs/home/imagem-home-corte-moderno.png" alt="Corte Moderno" class="home-imagem-servico">
+                            
+                            <!-- Descrição do serviço -->
+                            <p class="home-descricao-servico">Transforme seu visual com cortes modernos e personalizados, feitos para destacar sua personalidade e estilo único.</p>
+                            
+                            <!-- Botão de ação -->
+                            <a href="../pages/login.php" class="home-botao home-botao-agendar">AGENDE</a>
+                        </div>
+        
+                        <!-- ===========================================
+                            CARD 2 - BARBAS
+                        =========================================== -->
+                        <div class="home-cartao-servico">
+                            <div class="home-cartao-servico-titulo">
+                                <h3 class="home-titulo-servico">BARBAS</h3>
+                                <img src="../assets/imgs/home/imagem-home-navalha.png" alt="Navalha" class="home-icone-servico">
+                            </div>
+        
+                            <!-- Imagem do serviço -->
+                            <img src="../assets/imgs/home/imagem-home-barba.png" alt="Barba" class="home-imagem-servico">
+                            
+                            <!-- Descrição do serviço -->
+                            <p class="home-descricao-servico">Transforme seu visual com cortes modernos e personalizados, feitos para destacar sua personalidade e estilo único.</p>
+                            
+                            <!-- Botão de ação -->
+                            <a href="#../pages/login.php" class="home-botao home-botao-agendar">AGENDE</a>
+                        </div>
+        
+                        <!-- ===========================================
+                            CARD 3 - SOBRANCELHAS
+                        =========================================== -->
+                        <div class="home-cartao-servico">
+                            <div class="home-cartao-servico-titulo">
+                                <h3 class="home-titulo-servico">SOBRANCELHAS</h3>
+                                <img src="../assets/imgs/home/imagem-home-cadeira.png" alt="Cadeira" class="home-icone-servico">
+                            </div>
+                            
+                            <!-- Imagem do serviço -->
+                            <img src="../assets/imgs/home/imagem-home-sombrancelha.png" alt="Sombrancelha" class="home-imagem-servico">
+                            
+                            <!-- Descrição do serviço -->
+                            <p class="home-descricao-servico">Transforme seu visual com cortes modernos e personalizados, feitos para destacar sua personalidade e estilo único.</p>
+                            
+                            <!-- Botão de ação -->
+                            <a href="../pages/login.php" class="home-botao home-botao-agendar">AGENDE</a>
+                        </div>
+                    </div>
+                </section>
 
         <!-- ===========================================
             SEÇÃO PRINCIPAL (HERO SECTION)
@@ -59,75 +128,6 @@ if (session_status() === PHP_SESSION_NONE) {
             <!-- Container da imagem principal -->
             <div class="home-imagem-principal">
                 <img src="../assets/imgs/home/imagem-home-barbeiro.png" alt="Corte de Cabelo" class="home-imagem">
-            </div>
-        </section>
-
-        <!-- ===========================================
-            SEÇÃO DE SERVIÇOS
-        =========================================== -->
-        <section id="home-secao-servicos" class="home-secao-servicos">
-            <!-- Título da seção -->
-            <h1 class="home-titulo-secao">NOSSOS SERVIÇOS</h1>
-            
-            <!-- Container dos cards de serviços -->
-            <div class="cards">
-                <!-- ===========================================
-                    CARD 1 - CORTES MODERNOS
-                =========================================== -->
-                <div class="home-cartao-servico">
-                    <!-- Cabeçalho do card (título + ícone) -->
-                    <div class="home-cartao-servico-titulo">
-                        <h3 class="home-titulo-servico">CORTES MODERNOS</h3>
-                        <img src="../assets/imgs/home/imagem-home-tesoura.png" alt="Tesoura" class="home-icone-servico">
-                    </div>
-                    
-                    <!-- Imagem do serviço -->
-                    <img src="../assets/imgs/home/imagem-home-corte-moderno.png" alt="Corte Moderno" class="home-imagem-servico">
-                    
-                    <!-- Descrição do serviço -->
-                    <p class="home-descricao-servico">Transforme seu visual com cortes modernos e personalizados, feitos para destacar sua personalidade e estilo único.</p>
-                    
-                    <!-- Botão de ação -->
-                    <a href="../pages/login.php" class="home-botao home-botao-agendar">AGENDE</a>
-                </div>
-
-                <!-- ===========================================
-                    CARD 2 - BARBAS
-                =========================================== -->
-                <div class="home-cartao-servico">
-                    <div class="home-cartao-servico-titulo">
-                        <h3 class="home-titulo-servico">BARBAS</h3>
-                        <img src="../assets/imgs/home/imagem-home-navalha.png" alt="Navalha" class="home-icone-servico">
-                    </div>
-
-                    <!-- Imagem do serviço -->
-                    <img src="../assets/imgs/home/imagem-home-barba.png" alt="Barba" class="home-imagem-servico">
-                    
-                    <!-- Descrição do serviço -->
-                    <p class="home-descricao-servico">Transforme seu visual com cortes modernos e personalizados, feitos para destacar sua personalidade e estilo único.</p>
-                    
-                    <!-- Botão de ação -->
-                    <a href="#../pages/login.php" class="home-botao home-botao-agendar">AGENDE</a>
-                </div>
-
-                <!-- ===========================================
-                    CARD 3 - SOBRANCELHAS
-                =========================================== -->
-                <div class="home-cartao-servico">
-                    <div class="home-cartao-servico-titulo">
-                        <h3 class="home-titulo-servico">SOBRANCELHAS</h3>
-                        <img src="../assets/imgs/home/imagem-home-cadeira.png" alt="Cadeira" class="home-icone-servico">
-                    </div>
-                    
-                    <!-- Imagem do serviço -->
-                    <img src="../assets/imgs/home/imagem-home-sombrancelha.png" alt="Sombrancelha" class="home-imagem-servico">
-                    
-                    <!-- Descrição do serviço -->
-                    <p class="home-descricao-servico">Transforme seu visual com cortes modernos e personalizados, feitos para destacar sua personalidade e estilo único.</p>
-                    
-                    <!-- Botão de ação -->
-                    <a href="../pages/login.php" class="home-botao home-botao-agendar">AGENDE</a>
-                </div>
             </div>
         </section>
 
