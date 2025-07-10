@@ -1,6 +1,6 @@
 # 💈 Projeto Barbearia CORTAÌ
 
-Este é um sistema web desenvolvido para uma barbearia fictícia chamado **CORRAH**, com o objetivo de facilitar o agendamento de cortes de cabelo, barbas e serviços relacionados. O projeto foi desenvolvido durante as aulas como atividade prática.
+Este é um sistema web desenvolvido para uma barbearia fictícia chamado **CORTAÌ**, com o objetivo de facilitar o agendamento de cortes de cabelo, barbas e serviços relacionados. O projeto foi desenvolvido durante as aulas como atividade prática.
 
 ## 👨‍💻 Desenvolvedores
 
