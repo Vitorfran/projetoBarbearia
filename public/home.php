@@ -33,6 +33,10 @@ if (session_status() === PHP_SESSION_NONE) {
 <body class="home-corpo">
     <!-- Conteúdo principal da página -->
     <main class="home-conteudo-principal">
+
+        <section>
+            <h3 class = "home-secao-texto">Na Essência Masculina, acreditando que o autocuidado é mais do que estética, é expreção, é força, é identidade. Cada barba aparada, cada pele bem tratada, cada detalhe é um passo rumo ao seu protagonismo</h3>
+        </section>
         
                 <!-- ===========================================
                     SEÇÃO DE SERVIÇOS

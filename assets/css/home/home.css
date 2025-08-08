@@ -24,6 +24,13 @@ html {
     scroll-padding-top: 100px; /* Espaço para o header fixo */
 }
 
+.home-secao-texto{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 0rem 7rem;
+}
+
 /* Efeito de fade-in para as seções */
 .home-secao-principal,
 .home-secao-servicos,

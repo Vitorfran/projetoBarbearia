@@ -69,10 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-
-// Exibe mensagens de erro se existirem
-$erro = $_SESSION['erro'] ?? '';
-unset($_SESSION['erro']);
 ?>
 
 <!DOCTYPE html>
