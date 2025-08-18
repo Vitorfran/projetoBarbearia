@@ -140,92 +140,101 @@ main {
 
 /* -------------------------------------------
     Container dos cards de serviços
-------------------------------------------- */
-.cards {
-    display: flex;              /* Layout flexível */
-    flex-direction: row;         /* Alinhamento em linha */
-    justify-content: space-evenly; /* Distribuição uniforme */
+------------------------------------------- */.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: stretch; /* Faz os cards terem a mesma altura */
+    gap: 2rem; /* Espaço consistente entre os cards */
 }
 
 /* -------------------------------------------
     Estilo individual dos cards de serviço
 ------------------------------------------- */
 .home-cartao-servico {
-    background-color: var(--cor-secundaria);  /* Fundo laranja */
-    border-radius: 25px;         /* Bordas arredondadas */
-    width: 300px;                 /* Largura proporcional */
-    height: auto;               /* Altura automática */
-    padding: 2rem;              /* Espaçamento interno */
+    background-color: var(--cor-secundaria);
+    border-radius: 25px;
+    width: 300px;
+    height: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 /* -------------------------------------------
     Cabeçalho do card (título + ícone)
 ------------------------------------------- */
 .home-cartao-servico-titulo {
-    display: flex;              /* Alinhamento flexível */
-    justify-content: center;    /* Centraliza horizontalmente */
-    text-align: center;         /* Alinhamento do texto */
-    align-items: center;        /* Centraliza verticalmente */
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 1rem; /* Espaço consistente abaixo do título */
 }
 
 .home-titulo-servico {
-    font-weight: bold;          /* Texto em negrito */
-    font-size: 25px;            /* Tamanho médio */
-    display: flex;              /* Para alinhamento */
-    justify-content: center;    /* Centralização horizontal */
-    text-align: center;         /* Alinhamento do texto */
-    align-items: center;        /* Centralização vertical */
-    margin-right: 1rem;         /* Espaço à direita do ícone */
+    font-weight: bold;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-right: 1rem;
 }
 
 /* -------------------------------------------
     Container do ícone do serviço
 ------------------------------------------- */
 .home-icone-servico {
-    display: flex;              /* Para centralização */
-    justify-content: center;    /* Centraliza horizontalmente */
-    text-align: center;        /* Alinhamento do texto */
-    align-items: center;       /* Centraliza verticalmente */
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
 }
 
 /* -------------------------------------------
     Imagem dentro do card
 ------------------------------------------- */
 .home-imagem-servico {
-    width: 100%;          /* Ocupa 100% da largura do card */
-    height: auto;         /* Mantém a proporção da imagem */
-    max-height: 180px;    /* Altura máxima para padronização */
-    object-fit: cover;    /* Garante que a imagem cubra o espaço sem distorcer */
-    border-radius: 10px;  /* Bordas arredondadas para combinar com o card */
-    margin: 1rem 0;       /* Espaçamento vertical */
-    display: block;       /* Remove espaços indesejados abaixo da imagem */
+    width: 100%;
+    height: 180px; /* Altura fixa para padronização */
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 1rem 0;
+    display: block;
 }
 
 /* -------------------------------------------
     Descrição do serviço
 ------------------------------------------- */
 .home-descricao-servico {
-    font-weight: 300;           /* Peso de fonte leve */
-    font-size: 15px;            /* Tamanho padrão */
-    margin-bottom: 2rem;        /* Espaço inferior */
+    font-weight: 300;
+    font-size: 15px;
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Faz a descrição ocupar o espaço disponível */
 }
 
 /* -------------------------------------------
-    Botão de agendamento
+    Botão de agendamento (AGORA ALINHADO)
 ------------------------------------------- */
 .home-botao-agendar {
-    background-color: var(--cor-terciaria);  /* Fundo marrom */
-    color: var(--cor-secundaria);            /* Texto laranja */
-    font-size: 30px;                        /* Tamanho grande */
-    padding: 1rem 3rem;                     /* Espaçamento interno */
-    border-radius: 20px;                    /* Bordas arredondadas */
-    font-weight: bold;                      /* Texto em negrito */
-    text-align: center;                     /* Centraliza texto */
-    text-decoration: none;                  /* Remove sublinhado */
-    display: block;                         /* Transforma em bloco */
-    margin: 0 auto;                         /* Centraliza horizontalmente */
-    width: fit-content;                     /* Largura conforme conteúdo */
-    transition: background-color 1s;        /* Transição suave */
+    background-color: var(--cor-terciaria);
+    color: var(--cor-secundaria);
+    font-size: 1.5rem; /* Reduzi o tamanho para melhor proporção */
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    transition: background-color 0.3s;
+    margin-top: auto; /* Empurra o botão para a parte inferior */
+}
+
+.home-botao-agendar:hover {
+    background-color: #6d3b2b; /* Cor mais escura no hover */
 }
 
 /* ===========================================
