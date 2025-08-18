@@ -151,6 +151,17 @@ main {
 /* -------------------------------------------
     Estilo individual dos cards de serviço
 ------------------------------------------- */
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: stretch; /* Faz os cards terem a mesma altura */
+    gap: 2rem; /* Espaço consistente entre os cards */
+}
+
+/* -------------------------------------------
+    Estilo individual dos cards de serviço
+------------------------------------------- */
 .home-cartao-servico {
     background-color: var(--cor-secundaria);
     border-radius: 25px;

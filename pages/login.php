@@ -66,6 +66,7 @@ function redirectBasedOnUserType() {
     <link rel="stylesheet" href="../assets/css/login.css">
     <!-- Adicione o Bootstrap CSS se estiver usando -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../favicon/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <?php

@@ -1,7 +1,6 @@
 <?php
-
-require_once '../partes/header.php';
-
+// Mover este bloco para o topo do arquivo
+session_start(); // Certifique-se de que a sessão é iniciada
 
 // Verifica se o usuário está logado e é cliente
 if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'cliente') {
@@ -12,6 +11,9 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'cliente') 
     }
     exit;
 }
+
+// Agora, inclua o cabeçalho
+require_once '../partes/header.php';
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +33,8 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'cliente') 
     <!-- <link rel="stylesheet" href="../assets/css/home/reset.css"> --> <!-- Reset CSS (comentado) -->
     <link rel="stylesheet" href="../assets/css/fonts.css"> 
     <link rel="stylesheet" href="../assets/css/styleHeader.css"><!-- Estilos de fontes -->
-    <link rel="stylesheet" href="../assets/css/home/home_auth.css"> <!-- Estilos principais da página -->
+    <link rel="stylesheet" href="../assets/css/home/home_auth.css">
+    <link rel="icon" href="../favicon/favicon.ico" type="image/x-icon"> <!-- Estilos principais da página -->
 </head>
 
 <!-- ===========================================

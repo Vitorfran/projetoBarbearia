@@ -25,6 +25,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="../assets/css/fonts.css"> 
     <link rel="stylesheet" href="../assets/css/styleHeader.css"><!-- Estilos de fontes -->
     <link rel="stylesheet" href="../assets/css/home/home.css"> <!-- Estilos principais da página -->
+<link rel="icon" href="../favicon/favicon.ico" type="image/x-icon">
 </head>
 
 <!-- ===========================================
