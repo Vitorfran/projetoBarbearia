@@ -1,6 +1,5 @@
 <?php
 
-require_once '../partes/header.php';
 
 
 // Verifica se o usuário está logado e é cliente
@@ -12,6 +11,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'cliente') 
     }
     exit;
 }
+require_once '../partes/header.php';
 ?>
 
 <!DOCTYPE html>
