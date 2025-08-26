@@ -30,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($success) {
                 // Busca o ID do usuário recém-criado
-                require_once __DIR__ . '/../pages/login.php';
                 $id = $pdo->lastInsertId();
                 
                 // Se o usuário for um barbeiro, associamos ele a todos os serviços disponíveis
