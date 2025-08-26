@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($success) {
                 // Busca o ID do usuário recém-criado
                 $id = $pdo->lastInsertId();
-                
+
                 // Se o usuário for um barbeiro, associamos ele a todos os serviços disponíveis
                 if ($tipo === 'profissional') {
                     // Obter todos os serviços disponíveis
