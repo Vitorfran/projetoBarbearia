@@ -1,6 +1,6 @@
 <?php
 
-
+session_start();
 
 // Verifica se o usuário está logado e é cliente
 if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'cliente') {
