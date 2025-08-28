@@ -15,10 +15,40 @@ $servicos = $pdo->query("SELECT * FROM servicos")->fetchAll();
 $profissionais_disponiveis = [];
 $data_agendamento = $_POST['data'] ?? '';
 $hora_agendamento = $_POST['hora'] ?? '';
+$horarios_indisponiveis = [];
+
+// Buscar MEUS agendamentos para exibir
+$meus_agendamentos = [];
+if (isset($_SESSION['usuario']['id'])) {
+    $stmt = $pdo->prepare("
+        SELECT a.*, s.nome as servico_nome, u.nome as profissional_nome 
+        FROM agendamentos a
+        JOIN servicos s ON a.servico_id = s.id
+        JOIN usuarios u ON a.profissional_id = u.id
+        WHERE a.cliente_id = ?
+        ORDER BY a.data_hora_inicio DESC
+    ");
+    $stmt->execute([$_SESSION['usuario']['id']]);
+    $meus_agendamentos = $stmt->fetchAll();
+}
 
 if (!empty($data_agendamento) && !empty($hora_agendamento)) {
-    $data_hora_agendamento = $data_agendamento . ' ' . $hora_agendamento . ':00';
+    $data_hora_inicio = $data_agendamento . ' ' . $hora_agendamento . ':00';
+    $data_hora_fim = date('Y-m-d H:i:s', strtotime($data_hora_inicio . ' +1 hour'));
     
+    // Buscar horários já agendados para mostrar ao usuário
+    $stmt = $pdo->prepare("
+        SELECT DATE_FORMAT(data_hora_inicio, '%H:%i') as hora_agendada 
+        FROM agendamentos 
+        WHERE DATE(data_hora_inicio) = ? 
+        AND status != 'cancelado'
+        ORDER BY hora_agendada
+    ");
+    $stmt->execute([$data_agendamento]);
+    $horarios_agendados = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    $horarios_indisponiveis = $horarios_agendados;
+    
+    // Buscar profissionais disponíveis considerando agendamentos e indisponibilidades
     $stmt = $pdo->prepare("
         SELECT u.* 
         FROM usuarios u
@@ -27,10 +57,28 @@ if (!empty($data_agendamento) && !empty($hora_agendamento)) {
             SELECT 1 
             FROM indisponibilidades i
             WHERE i.profissional_id = u.id
-            AND ? BETWEEN i.data_hora_inicio AND i.data_hora_fim
+            AND (
+                (? BETWEEN i.data_hora_inicio AND i.data_hora_fim)
+                OR (? BETWEEN i.data_hora_inicio AND i.data_hora_fim)
+                OR (i.data_hora_inicio BETWEEN ? AND ?)
+            )
+        )
+        AND NOT EXISTS (
+            SELECT 1 
+            FROM agendamentos a
+            WHERE a.profissional_id = u.id
+            AND (
+                (? BETWEEN a.data_hora_inicio AND a.data_hora_fim)
+                OR (? BETWEEN a.data_hora_inicio AND a.data_hora_fim)
+                OR (a.data_hora_inicio BETWEEN ? AND ?)
+            )
+            AND a.status != 'cancelado'
         )
     ");
-    $stmt->execute([$data_hora_agendamento]);
+    $stmt->execute([
+        $data_hora_inicio, $data_hora_fim, $data_hora_inicio, $data_hora_fim,
+        $data_hora_inicio, $data_hora_fim, $data_hora_inicio, $data_hora_fim
+    ]);
     $profissionais_disponiveis = $stmt->fetchAll();
 } else {
     $profissionais_disponiveis = $pdo->query("SELECT * FROM usuarios WHERE tipo = 'profissional'")->fetchAll();
@@ -51,7 +99,7 @@ unset($_SESSION['erro'], $_SESSION['sucesso']);
   <link rel="stylesheet" href="../assets/css/agendamento.css">
   <style>
     .container {
-      max-width: 800px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
     }
@@ -76,6 +124,11 @@ unset($_SESSION['erro'], $_SESSION['sucesso']);
       display: flex;
       flex-direction: column;
       gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     
     .card-servico {
@@ -148,9 +201,109 @@ unset($_SESSION['erro'], $_SESSION['sucesso']);
     .submit-btn:hover {
       background-color: #e69c00;
     }
+    
+    .submit-btn:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    
+    /* Novos estilos para horários indisponíveis */
+    .horarios-indisponiveis {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f8d7da;
+      border-radius: 4px;
+      display: none;
+    }
+    
+    .horario-indisponivel {
+      display: inline-block;
+      margin-right: 5px;
+      padding: 3px 8px;
+      background-color: #dc3545;
+      color: white;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+    
+    /* Estilos para a lista de agendamentos */
+    .meus-agendamentos {
+      margin-top: 40px;
+    }
+    
+    .agendamentos-titulo {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #333;
+      border-bottom: 2px solid #FFB22C;
+      padding-bottom: 10px;
+    }
+    
+    .agendamento-item {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .agendamento-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .agendamento-servico {
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .agendamento-data {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    .agendamento-profissional {
+      color: #555;
+    }
+    
+    .agendamento-status {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    
+    .status-agendado {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+    
+    .status-concluido {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    .status-cancelado {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    
+    .sem-agendamentos {
+      text-align: center;
+      color: #666;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
+ 
+
+  
   <div class="container">
     <h2>Agendamento</h2>
     
@@ -179,8 +332,19 @@ unset($_SESSION['erro'], $_SESSION['sucesso']);
       </div>
 
       <!-- Campo de data e hora do agendamento -->
-      <input type="date" name="data" id="dataAgendamento" min="<?= date('Y-m-d') ?>" required>
-      <input type="time" name="hora" id="horaAgendamento" min="08:00" max="20:00" required>
+      <div>
+        <label for="dataAgendamento">Data:</label>
+        <input type="date" name="data" id="dataAgendamento" min="<?= date('Y-m-d') ?>" required>
+      </div>
+      
+      <div>
+        <label for="horaAgendamento">Horário:</label>
+        <input type="time" name="hora" id="horaAgendamento" min="08:00" max="20:00" step="1800" required>
+        <div class="horarios-indisponiveis" id="horariosIndisponiveis">
+          <strong>Horários indisponíveis neste dia:</strong>
+          <div id="listaHorariosIndisponiveis"></div>
+        </div>
+      </div>
 
       <!-- Escolha do barbeiro -->
       <div class="barbeiros-container">
@@ -193,12 +357,46 @@ unset($_SESSION['erro'], $_SESSION['sucesso']);
             </label>
           <?php endforeach; ?>
         </div>
+        <div id="semBarbeiros" style="display: none; color: #dc3545; margin-top: 10px;">
+          Nenhum barbeiro disponível para o horário selecionado.
+        </div>
       </div>
 
       <div class="button-container">
-        <button type="submit" class="submit-btn">Confirmar</button>
+        <button type="submit" class="submit-btn" id="submitBtn">Confirmar Agendamento</button>
       </div>
     </form>
+
+    <!-- Seção para mostrar MEUS agendamentos -->
+    <div class="meus-agendamentos">
+      <h3 class="agendamentos-titulo">Meus Agendamentos</h3>
+      
+      <?php if (count($meus_agendamentos) > 0): ?>
+        <?php foreach ($meus_agendamentos as $agendamento): ?>
+          <div class="agendamento-item">
+            <div class="agendamento-header">
+              <span class="agendamento-servico"><?= htmlspecialchars($agendamento['servico_nome']) ?></span>
+              <span class="agendamento-data">
+                <?= date('d/m/Y H:i', strtotime($agendamento['data_hora_inicio'])) ?>
+              </span>
+            </div>
+            <div class="agendamento-profissional">
+              Profissional: <?= htmlspecialchars($agendamento['profissional_nome']) ?>
+            </div>
+            <div>
+              Status: 
+              <span class="agendamento-status status-<?= $agendamento['status'] ?>">
+                <?= ucfirst($agendamento['status']) ?>
+              </span>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <div class="sem-agendamentos">
+          <p>Você ainda não possui agendamentos.</p>
+        </div>
+      <?php endif; ?>
+    </div>
   </div>
 
   <script>
@@ -206,6 +404,10 @@ unset($_SESSION['erro'], $_SESSION['sucesso']);
       const dataInput = document.getElementById('dataAgendamento');
       const horaInput = document.getElementById('horaAgendamento');
       const barbeirosContainer = document.getElementById('barbeirosContainer');
+      const semBarbeirosMsg = document.getElementById('semBarbeiros');
+      const horariosIndisponiveis = document.getElementById('horariosIndisponiveis');
+      const listaHorariosIndisponiveis = document.getElementById('listaHorariosIndisponiveis');
+      const submitBtn = document.getElementById('submitBtn');
       
       function atualizarBarbeirosDisponiveis() {
         const data = dataInput.value;
@@ -220,15 +422,18 @@ unset($_SESSION['erro'], $_SESSION['sucesso']);
             body: `data=${encodeURIComponent(data)}&hora=${encodeURIComponent(hora)}`
           })
           .then(response => response.json())
-          .then(profissionais => {
+          .then(data => {
             barbeirosContainer.innerHTML = '';
+            semBarbeirosMsg.style.display = 'none';
+            submitBtn.disabled = false;
             
-            if (profissionais.length === 0) {
-              barbeirosContainer.innerHTML = '<p>Nenhum barbeiro disponível neste horário</p>';
+            if (data.profissionais.length === 0) {
+              semBarbeirosMsg.style.display = 'block';
+              submitBtn.disabled = true;
               return;
             }
             
-            profissionais.forEach(prof => {
+            data.profissionais.forEach(prof => {
               const label = document.createElement('label');
               label.innerHTML = `
                 <input type="radio" name="barbeiro_id" value="${prof.id}" required>
@@ -236,6 +441,21 @@ unset($_SESSION['erro'], $_SESSION['sucesso']);
               `;
               barbeirosContainer.appendChild(label);
             });
+            
+            // Mostrar horários indisponíveis
+            if (data.horarios_indisponiveis && data.horarios_indisponiveis.length > 0) {
+              horariosIndisponiveis.style.display = 'block';
+              listaHorariosIndisponiveis.innerHTML = '';
+              
+              data.horarios_indisponiveis.forEach(horario => {
+                const span = document.createElement('span');
+                span.className = 'horario-indisponivel';
+                span.textContent = horario;
+                listaHorariosIndisponiveis.appendChild(span);
+              });
+            } else {
+              horariosIndisponiveis.style.display = 'none';
+            }
           })
           .catch(error => {
             console.error('Erro ao buscar barbeiros:', error);
@@ -243,7 +463,40 @@ unset($_SESSION['erro'], $_SESSION['sucesso']);
         }
       }
       
-      dataInput.addEventListener('change', atualizarBarbeirosDisponiveis);
+      dataInput.addEventListener('change', function() {
+        // Quando a data muda, buscar horários indisponíveis para essa data
+        if (dataInput.value) {
+          fetch('busca_horarios_indisponiveis.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `data=${encodeURIComponent(dataInput.value)}`
+          })
+          .then(response => response.json())
+          .then(horarios => {
+            if (horarios.length > 0) {
+              horariosIndisponiveis.style.display = 'block';
+              listaHorariosIndisponiveis.innerHTML = '';
+              
+              horarios.forEach(horario => {
+                const span = document.createElement('span');
+                span.className = 'horario-indisponivel';
+                span.textContent = horario;
+                listaHorariosIndisponiveis.appendChild(span);
+              });
+            } else {
+              horariosIndisponiveis.style.display = 'none';
+            }
+          })
+          .catch(error => {
+            console.error('Erro ao buscar horários indisponíveis:', error);
+          });
+        }
+        
+        atualizarBarbeirosDisponiveis();
+      });
+      
       horaInput.addEventListener('change', atualizarBarbeirosDisponiveis);
     });
   </script>
