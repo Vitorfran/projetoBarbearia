@@ -1,0 +1,142 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    
+    main {
+      flex: 1;
+      padding: 1rem;
+    }
+    
+    /* Estilos do Footer - Começando pelo mobile */
+    footer {
+      background-color: #FFB22C;
+      padding: 2rem 1rem;
+      text-align: center;
+      width: 100%;
+    }
+    
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-section {
+      padding: 0.5rem;
+    }
+    
+    .footer-section h3 {
+      color: #333;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    
+    .footer-section p, 
+    .footer-section a {
+      color: #555;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-section a:hover {
+      color: #000;
+      text-decoration: underline;
+    }
+    
+    .footer-divider {
+      width: 100%;
+      height: 1px;
+      background-color: #353434;
+      margin: 1.5rem auto;
+    }
+    
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    
+    .footer-copyright {
+      font-size: 0.8rem;
+      color: #777;
+      line-height: 1.4;
+    }
+    
+    /*                              */
+
+    .social-media {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding-bottom: 1rem ;
+    }
+    
+    .social-media a {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      transition: transform 0.3s ease;
+    }
+    
+    .social-media a:hover {
+      transform: translateY(-3px);
+    }
+    
+    .social-media img {
+      width: 100%;
+      height: auto;
+    }
+
+    .img-home{
+      width: 120px;
+      height: auto;
+    }
+    
+    /* Media Queries para telas maiores */
+    @media (min-width: 600px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 900px) {
+      .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .footer-section {
+        text-align: center;
+      }
+      
+      .footer-section h3 {
+        font-size: 1.2rem;
+      }
+      
+      .footer-section p, 
+      .footer-section a {
+        font-size: 1rem;
+      }
+    }
+ 

@@ -1,0 +1,698 @@
+/* ===========================================
+    VARIÁVEIS GLOBAIS (cores e estilos base)
+=========================================== */
+:root {
+    --cor-fundo: #F7F7F7;        /* Cor de fundo principal (cinza claro) */
+    --cor-secundaria: #FFB22C;   /* Cor de destaque (laranja) */
+    --cor-terciaria: #854836;    /* Cor terciária (marrom escuro) */
+}
+
+
+/* ===========================================
+    ESTILOS GERAIS DO CORPO DA PÁGINA
+=========================================== */
+body {
+    background-color: var(--cor-fundo);  /* Aplica a cor de fundo definida */
+    font-family: "Poppins", sans-serif;  /* Define a fonte padrão */
+}
+
+/* ===========================================
+    TRANSITION EFFECTS
+=========================================== */
+html {
+    scroll-behavior: smooth;  /* Transição suave ao rolar a página */
+    scroll-padding-top: 100px; /* Espaço para o header fixo */
+}
+
+/* Efeito de fade-in para as seções */
+.home-secao-principal,
+.home-secao-servicos,
+.home-secao-contato,
+.home-secao-planos,
+.home-secao-depoimentos {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Classe que será adicionada via JavaScript quando a seção estiver visível */
+.secao-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===========================================
+    ESTILOS DA ÁREA PRINCIPAL (MAIN)
+=========================================== */
+main {
+    padding: 10rem;  /* Espaçamento interno generoso para respiro visual */
+}
+
+/* ===========================================
+    SEÇÃO PRINCIPAL (HERO SECTION)
+=========================================== */
+.home-secao-principal {
+    margin-top: 15rem;
+    display: flex;                   /* Layout flexível */
+    flex-direction: row;             /* Alinhamento em linha */
+    align-items: center;             /* Centraliza verticalmente */
+    justify-content: center;         /* Centraliza horizontalmente */
+}
+
+/* -------------------------------------------
+    Container do texto principal
+------------------------------------------- */
+.home-conteudo-texto {
+    padding-right: 5rem;  /* Espaço à direita para separar da imagem */
+}
+
+/* -------------------------------------------
+    Título em destaque
+------------------------------------------- */
+.home-titulo-destaque {
+    font-weight: bold;      /* Texto em negrito */
+    font-size: 30px;        /* Tamanho grande para ênfase */
+    margin-bottom: 0.5rem;  /* Espaço abaixo do título */
+}
+
+/* -------------------------------------------
+    Descrição abaixo do título
+------------------------------------------- */
+.home-descricao {
+    font-weight: 300;                   /* Peso de fonte leve */
+    font-size: 15px;                    /* Tamanho padrão */
+    color: var(--cor-terciaria);        /* Cor marrom escuro */
+    margin: 0.5rem 0rem 2rem 0rem;      /* Margem superior/inferior */
+}
+
+/* -------------------------------------------
+    Container dos botões de navegação
+------------------------------------------- */
+.home-botoes-navegacao {
+    display: flex;                 /* Layout flexível */
+    justify-content: space-between; /* Espaço igual entre botões */
+}
+
+/* -------------------------------------------
+    Estilo base dos botões
+------------------------------------------- */
+.home-botao {
+    background-color: var(--cor-secundaria);  /* Cor laranja */
+    text-decoration: none;      /* Remove sublinhado */
+    font-weight: bold;          /* Texto em negrito */
+    color: var(--cor-terciaria); /* Cor do texto */
+    padding: 1.5rem 4rem;       /* Espaçamento interno generoso */
+    border-radius: 15px;        /* Bordas arredondadas */
+    transition: background-color 1s; /* Efeito hover suave */
+}
+
+/* -------------------------------------------
+    Efeito hover dos botões
+------------------------------------------- */
+.home-botao:hover {
+    background-color: #db9214;  /* Laranja mais escuro no hover */
+}
+
+/* -------------------------------------------
+    Imagem da seção principal
+------------------------------------------- */
+.home-imagem-principal {
+    padding-left: 5rem;  /* Espaço à esquerda para separar do texto */
+}
+
+/* ===========================================
+    SEÇÃO DE SERVIÇOS
+=========================================== */
+.home-secao-servicos {
+    margin-top: 1rem;  /* Grande margem superior para separar seções */
+}
+
+/* -------------------------------------------
+    Título da seção de serviços
+------------------------------------------- */
+.home-titulo-secao {
+    font-weight: bold;           /* Texto em negrito */
+    font-size: 50px;             /* Tamanho grande */
+    display: flex;               /* Flex para centralização */
+    justify-content: center;     /* Centraliza horizontalmente */
+    margin-bottom: 9rem;         /* Espaço abaixo do título */
+}
+
+/* -------------------------------------------
+    Container dos cards de serviços
+------------------------------------------- */
+.cards {
+    display: flex;              /* Layout flexível */
+    flex-direction: row;         /* Alinhamento em linha */
+    justify-content: space-evenly; /* Distribuição uniforme */
+}
+
+/* -------------------------------------------
+    Estilo individual dos cards de serviço
+------------------------------------------- */
+.home-cartao-servico {
+    background-color: var(--cor-secundaria);  /* Fundo laranja */
+    border-radius: 25px;         /* Bordas arredondadas */
+    width: 300px;                 /* Largura proporcional */
+    height: auto;               /* Altura automática */
+    padding: 2rem;              /* Espaçamento interno */
+}
+
+/* -------------------------------------------
+    Cabeçalho do card (título + ícone)
+------------------------------------------- */
+.home-cartao-servico-titulo {
+    display: flex;              /* Alinhamento flexível */
+    justify-content: center;    /* Centraliza horizontalmente */
+    text-align: center;         /* Alinhamento do texto */
+    align-items: center;        /* Centraliza verticalmente */
+}
+
+.home-titulo-servico {
+    font-weight: bold;          /* Texto em negrito */
+    font-size: 25px;            /* Tamanho médio */
+    display: flex;              /* Para alinhamento */
+    justify-content: center;    /* Centralização horizontal */
+    text-align: center;         /* Alinhamento do texto */
+    align-items: center;        /* Centralização vertical */
+    margin-right: 1rem;         /* Espaço à direita do ícone */
+}
+
+/* -------------------------------------------
+    Container do ícone do serviço
+------------------------------------------- */
+.home-icone-servico {
+    display: flex;              /* Para centralização */
+    justify-content: center;    /* Centraliza horizontalmente */
+    text-align: center;        /* Alinhamento do texto */
+    align-items: center;       /* Centraliza verticalmente */
+}
+
+/* -------------------------------------------
+    Imagem dentro do card
+------------------------------------------- */
+.home-imagem-servico {
+    width: 100%;          /* Ocupa 100% da largura do card */
+    height: auto;         /* Mantém a proporção da imagem */
+    max-height: 180px;    /* Altura máxima para padronização */
+    object-fit: cover;    /* Garante que a imagem cubra o espaço sem distorcer */
+    border-radius: 10px;  /* Bordas arredondadas para combinar com o card */
+    margin: 1rem 0;       /* Espaçamento vertical */
+    display: block;       /* Remove espaços indesejados abaixo da imagem */
+}
+
+/* -------------------------------------------
+    Descrição do serviço
+------------------------------------------- */
+.home-descricao-servico {
+    font-weight: 300;           /* Peso de fonte leve */
+    font-size: 15px;            /* Tamanho padrão */
+    margin-bottom: 2rem;        /* Espaço inferior */
+}
+
+/* -------------------------------------------
+    Botão de agendamento
+------------------------------------------- */
+.home-botao-agendar {
+    background-color: var(--cor-terciaria);  /* Fundo marrom */
+    color: var(--cor-secundaria);            /* Texto laranja */
+    font-size: 30px;                        /* Tamanho grande */
+    padding: 1rem 3rem;                     /* Espaçamento interno */
+    border-radius: 20px;                    /* Bordas arredondadas */
+    font-weight: bold;                      /* Texto em negrito */
+    text-align: center;                     /* Centraliza texto */
+    text-decoration: none;                  /* Remove sublinhado */
+    display: block;                         /* Transforma em bloco */
+    margin: 0 auto;                         /* Centraliza horizontalmente */
+    width: fit-content;                     /* Largura conforme conteúdo */
+    transition: background-color 1s;        /* Transição suave */
+}
+
+/* ===========================================
+    SEÇÃO DE CONTATO
+=========================================== */
+.home-secao-contato {
+    margin-top: 15rem;          /* Espaço acima da seção */
+    text-align: center;         /* Centralização do texto */
+}
+
+/* -------------------------------------------
+    Container do conteúdo de contato
+------------------------------------------- */
+.home-conteudo-contato {
+    background-color: #FFFFFF;              /* Fundo branco */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border-radius: 25px;                    /* Bordas arredondadas */
+    padding: 4rem;                         /* Espaçamento interno */
+    display: flex;                         /* Layout flexível */
+    flex-direction: row;                   /* Disposição em linha */
+    justify-content: space-between;        /* Espaço entre elementos */
+    width: 80%;                           /* Largura proporcional */
+    max-width: 1200px;                    /* Largura máxima */
+    margin: 0 auto;                       /* Centraliza na página */
+    gap: 3rem;                            /* Espaço entre colunas */
+    flex-wrap: wrap;                      /* Quebra linha se necessário */
+}
+
+/* -------------------------------------------
+    Área do formulário
+------------------------------------------- */
+.home-formulario-contato {
+    flex: 1;                    /* Ocupa espaço disponível */
+    min-width: 300px;           /* Largura mínima */
+}
+
+/* -------------------------------------------
+    Estilo do formulário
+------------------------------------------- */
+.home-formulario {
+    display: flex;              /* Layout flexível */
+    flex-direction: column;     /* Disposição em coluna */
+}
+
+/* -------------------------------------------
+    Rótulos dos campos
+------------------------------------------- */
+.home-rotulo {
+    font-weight: 500;           /* Peso de fonte médio */
+    font-size: 1.5rem;          /* Tamanho aumentado */
+    margin-bottom: 0.5rem;      /* Espaço abaixo */
+    text-align: left;           /* Alinhamento à esquerda */
+}
+
+/* -------------------------------------------
+    Campos de input e textarea
+------------------------------------------- */
+.home-campo-input,
+.home-campo-textarea {
+    width: 100%;                /* Largura total */
+    font-size: 1rem;            /* Tamanho padrão */
+    padding: 1rem 1.5rem;       /* Espaçamento interno */
+    margin-bottom: 1.5rem;      /* Espaço abaixo */
+    border-radius: 30px;        /* Bordas arredondadas */
+    border: 1px solid #ccc;     /* Borda sutil */
+    outline: none;              /* Remove contorno padrão */
+    transition: border-color 0.3s; /* Transição suave */
+}
+
+/* -------------------------------------------
+    Efeito focus dos campos
+------------------------------------------- */
+.home-campo-input:focus,
+.home-campo-textarea:focus {
+    border-color: #144272;      /* Azul escuro quando ativo */
+}
+
+/* -------------------------------------------
+    Estilo específico do textarea
+------------------------------------------- */
+.home-campo-textarea {
+    resize: none;               /* Impede redimensionamento */
+}
+
+/* -------------------------------------------
+    Botão de envio
+------------------------------------------- */
+.home-botao-enviar {
+    padding: 1rem 2rem;         /* Espaçamento interno */
+    border: none;               /* Remove borda padrão */
+    border-radius: 30px;        /* Bordas arredondadas */
+    background-color: var(--cor-secundaria); /* Cor laranja */
+    font-size: 1.1rem;          /* Tamanho aumentado */
+    cursor: pointer;            /* Cursor pointer */
+    transition: background-color 0.3s; /* Transição suave */
+    margin-top: 1rem;           /* Espaço acima */
+}
+
+/* -------------------------------------------
+    Efeito hover do botão
+------------------------------------------- */
+.home-botao-enviar:hover {
+    background-color: #db9214;  /* Laranja mais escuro */
+}
+
+/* -------------------------------------------
+    Área de informações de contato
+------------------------------------------- */
+.home-informacoes-contato {
+    flex: 1;                    /* Ocupa espaço disponível */
+    min-width: 300px;           /* Largura mínima */
+    display: flex;              /* Layout flexível */
+    flex-direction: column;     /* Disposição em coluna */
+    justify-content: center;    /* Centraliza verticalmente */
+    gap: 2rem;                  /* Espaço entre itens */
+    align-items: center;        /* Centraliza horizontalmente */
+}
+
+/* -------------------------------------------
+    Itens de contato (telefone, email, etc)
+------------------------------------------- */
+.home-informacoes-contato div {
+    display: flex;              /* Alinhamento flexível */
+    align-items: center;        /* Centraliza verticalmente */
+    gap: 1rem;                  /* Espaço entre ícone e texto */
+}
+
+/* -------------------------------------------
+    Ícones de contato
+------------------------------------------- */
+.home-icone-contato {
+    width: 32px;               /* Largura fixa */
+    height: 32px;              /* Altura fixa */
+}
+
+/* -------------------------------------------
+    Texto dos itens de contato
+------------------------------------------- */
+.home-item-contato {
+    font-size: 1.1rem;         /* Tamanho aumentado */
+    color: #333;               /* Cor escura */
+}
+
+/* -------------------------------------------
+    Lista de redes sociais
+------------------------------------------- */
+.home-lista-redes {
+    display: flex;              /* Disposição em linha */
+    gap: 1rem;                  /* Espaço entre ícones */
+    margin-top: 1rem;           /* Espaço acima */
+    list-style: none;           /* Remove marcadores */
+}
+
+/* -------------------------------------------
+    Ícones de redes sociais
+------------------------------------------- */
+.home-item-rede img {
+    width: 32px;               /* Tamanho padrão */
+    height: 32px;              /* Tamanho padrão */
+    transition: transform 0.3s; /* Efeito hover suave */
+    margin-right: 0.5rem;      /* Espaço à direita */
+}
+
+/* -------------------------------------------
+    Efeito hover dos ícones
+------------------------------------------- */
+.home-item-rede img:hover {
+    transform: scale(1.2);     /* Aumenta ligeiramente */
+}
+
+/* ===========================================
+    SEÇÃO DE PLANOS
+=========================================== */
+.home-secao-planos {
+    text-align: center;         /* Centraliza conteúdo */
+    margin: 60px 0;            /* Espaço vertical */
+}
+
+/* -------------------------------------------
+    Título da seção
+------------------------------------------- */
+.home-titulo-secao {
+    font-size: 2rem;           /* Tamanho grande */
+    font-weight: 800;          /* Peso extra-negrito */
+}
+
+/* -------------------------------------------
+    Container dos planos
+------------------------------------------- */
+.home-conteudo-planos {
+    background-color: #111;     /* Fundo preto */
+    padding: 40px 20px;        /* Espaçamento interno */
+    margin-top: 20px;          /* Espaço acima */
+    border-radius: 16px;       /* Bordas arredondadas */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra pronunciada */
+    display: flex;             /* Layout flexível */
+    flex-wrap: wrap;           /* Quebra de linha */
+    justify-content: center;   /* Centraliza horizontalmente */
+    gap: 30px;                 /* Espaço entre cards */
+}
+
+/* -------------------------------------------
+    Subtítulo da seção
+------------------------------------------- */
+.home-subtitulo-planos {
+    font-size: 1.8rem;         /* Tamanho aumentado */
+    color: #fbbd08;            /* Amarelo/dourado */
+    margin-bottom: 30px;       /* Espaço abaixo */
+    width: 100%;               /* Largura total */
+}
+
+/* -------------------------------------------
+    Cards individuais de plano
+------------------------------------------- */
+.home-cartao-plano {
+    background-color: #111;     /* Fundo preto */
+    border: 2px solid #fbbd08;  /* Borda amarela */
+    border-radius: 16px;        /* Bordas arredondadas */
+    padding: 20px 25px;        /* Espaçamento interno */
+    width: 220px;              /* Largura fixa */
+    color: #fff;               /* Texto branco */
+    display: flex;             /* Layout flexível */
+    flex-direction: column;    /* Disposição em coluna */
+    align-items: center;       /* Centraliza horizontalmente */
+    gap: 10px;                 /* Espaço entre itens */
+}
+
+/* -------------------------------------------
+    Título do plano
+------------------------------------------- */
+.home-titulo-plano {
+    color: #fbbd08;            /* Amarelo/dourado */
+    font-size: 1.4rem;         /* Tamanho médio */
+}
+
+/* -------------------------------------------
+    Moeda do preço (R$)
+------------------------------------------- */
+.home-preco-moeda {
+    font-size: 1rem;           /* Tamanho padrão */
+    font-weight: bold;         /* Texto em negrito */
+}
+
+/* -------------------------------------------
+    Valor numérico do preço
+------------------------------------------- */
+.home-preco-valor {
+    font-size: 2.4rem;         /* Tamanho grande */
+    font-weight: bold;         /* Texto em negrito */
+    margin-top: -10px;         /* Ajuste de posição */
+}
+
+/* -------------------------------------------
+    Descrição do plano
+------------------------------------------- */
+.home-descricao-plano {
+    font-size: 0.95rem;        /* Tamanho reduzido */
+    margin: 0;                 /* Remove margens */
+}
+
+/* -------------------------------------------
+    Botão de seleção de plano
+------------------------------------------- */
+.home-botao-selecionar {
+    background-color: #fbbd08;  /* Amarelo/dourado */
+    color: #000;               /* Texto preto */
+    border: none;              /* Remove borda */
+    padding: 10px 20px;       /* Espaçamento interno */
+    border-radius: 8px;        /* Bordas arredondadas */
+    font-weight: bold;         /* Texto em negrito */
+    margin-top: 10px;          /* Espaço acima */
+    text-decoration: none;     /* Remove sublinhado */
+    transition: 0.3s;          /* Transição suave */
+}
+
+/* -------------------------------------------
+    Efeito hover do botão
+------------------------------------------- */
+.home-botao-selecionar:hover {
+    background-color: #e6a800; /* Amarelo mais escuro */
+}
+
+/* ===========================================
+    SEÇÃO DE DEPOIMENTOS
+=========================================== */
+.home-secao-depoimentos {
+    text-align: center;         /* Centraliza conteúdo */
+    margin: 60px 0;            /* Espaço vertical */
+}
+
+/* -------------------------------------------
+    Descrição da seção
+------------------------------------------- */
+.home-descricao-depoimentos {
+    font-style: italic;        /* Texto em itálico */
+    font-weight: 600;          /* Peso semi-negrito */
+    margin-bottom: 40px;       /* Espaço abaixo */
+}
+
+/* -------------------------------------------
+    Título da seção (com ícone)
+------------------------------------------- */
+.home-secao-depoimentos h2 {
+    display: flex;             /* Layout flexível */
+    align-items: center;       /* Centraliza verticalmente */
+    gap: 12px;                 /* Espaço entre elementos */
+    margin: 0 auto;           /* Centraliza horizontalmente */
+    width: fit-content;        /* Largura conforme conteúdo */
+    font-size: 1.1rem;        /* Tamanho aumentado */
+    font-weight: bold;         /* Texto em negrito */
+}
+
+/* -------------------------------------------
+    Avatar do depoente
+------------------------------------------- */
+.home-secao-depoimentos img {
+    width: 40px;               /* Tamanho fixo */
+    height: 40px;              /* Tamanho fixo */
+    border-radius: 50%;        /* Formato circular */
+}
+
+/* -------------------------------------------
+    Card de depoimento
+------------------------------------------- */
+.home-secao-depoimentos div {
+    background-color: #eaeaea; /* Fundo cinza claro */
+    border-radius: 8px;        /* Bordas arredondadas */
+    margin: 10px auto 40px;    /* Espaço vertical e centralização */
+    padding: 15px;             /* Espaçamento interno */
+    max-width: 500px;          /* Largura máxima */
+    text-align: left;          /* Alinhamento do texto */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* ===========================================
+    MEDIA QUERIES (RESPONSIVIDADE)
+=========================================== */
+
+/* -------------------------------------------
+    Dispositivos médios (tablets)
+------------------------------------------- */
+@media (max-width: 768px) {
+    /* Ajusta a seção principal para coluna */
+    .home-secao-principal {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Remove o padding direito do texto */
+    .home-conteudo-texto {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    /* Alinha botões verticalmente */
+    .home-botoes-navegacao {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Ajusta tamanho dos botões */
+    .home-botao {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    /* Remove padding da imagem */
+    .home-imagem-principal {
+        padding-left: 0;
+    }
+
+    /* Alinha cards verticalmente */
+    .cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    /* Aumenta largura dos cards */
+    .home-cartao-servico {
+        width: 300px;
+        margin: auto auto;
+    }
+
+    /* Reduz margem superior */
+    .home-secao-contato {
+        margin-top: 5rem;
+    }
+
+    /* Alinha conteúdo do contato em coluna */
+    .home-conteudo-contato {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 2rem;
+    }
+
+    /* Ajusta largura do formulário */
+    .home-formulario-contato {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    /* Ajusta largura das informações */
+    .home-informacoes-contato {
+        width: 100%;
+    }
+
+    /* Garante largura total dos inputs */
+    .home-campo-input,
+    .home-campo-textarea {
+        width: 100%;
+    }
+
+    /* Botão ocupa toda largura */
+    .home-botao-enviar {
+        width: 100%;
+    }
+}
+
+/* -------------------------------------------
+    Dispositivos pequenos (celulares)
+------------------------------------------- */
+@media (max-width: 480px) {
+
+    main{
+        padding: 7rem 1rem;
+    }
+    .home-secao-servicos{
+        margin-top: 10rem;
+    }
+    .home-titulo-secao{
+        margin-bottom: 3rem;
+    }
+    /* Reduz tamanho do título */
+    .home-titulo-destaque {
+        font-size: 24px;
+    }
+
+    /* Ajusta padding dos botões */
+    .home-botao {
+        padding: 1rem 3rem;
+    }
+
+    /* Oculta imagem em telas muito pequenas */
+    .home-imagem-principal {
+        display: none;
+    }
+
+    /* Ajusta largura dos cards */
+    .home-cartao-servico {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    /* Reduz padding dos inputs */
+    .home-campo-input,
+    .home-campo-textarea {
+        padding: 0.8rem 1.2rem;
+    }
+
+    /* Ajusta tamanho do botão */
+    .home-botao-enviar {
+        padding: 0.8rem 1.5rem;
+    }
+    .home-conteudo-contato{
+        padding: 2rem;
+    }
+}

@@ -1,0 +1,372 @@
+/* projetoBarbearia/assets/css/admin.css */
+
+/* Core Styles */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f4f7f6; /* Light background */
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 80px;
+    background-color: #FFB22C; /* Cortai's orange */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+header .logo img {
+    height: 40px;
+    width: auto;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    color: #fff; /* White text for header title */
+    margin: 0;
+    font-weight: 700;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #333; /* Darker text for nav links */
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s;
+    padding: 5px 0;
+    position: relative;
+}
+
+header nav ul li a:hover {
+    color: #fff; /* White text on hover */
+}
+
+header nav ul li a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #fff; /* White underline */
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s;
+}
+
+header nav ul li a:hover:after {
+    width: 100%;
+}
+
+/* Highlight for the active link */
+/* Using *= for partial match to handle potential query parameters */
+header nav ul li a[href*="admin_agendamentos.php"],
+header nav ul li a[href*="admin_usuarios.php"] { /* Added highlight for users page */
+    color: #fff;
+    font-weight: 600;
+}
+
+header nav ul li a[href*="admin_agendamentos.php"]:after,
+header nav ul li a[href*="admin_usuarios.php"]:after {
+    width: 100%;
+}
+
+/* Main Content Area */
+main {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 20px auto;
+}
+
+/* Message Styling */
+.mensagem {
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+}
+.mensagem.sucesso {
+    background-color: #d4edda; /* Light green */
+    color: #155724; /* Dark green */
+}
+.mensagem.erro {
+    background-color: #f8d7da; /* Light red */
+    color: #721c24; /* Dark red */
+}
+
+/* Filter Card Styles */
+.filter-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #e0e0e0;
+}
+
+.filter-card .form-label {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.filter-card .form-select,
+.filter-card .form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 10px 15px;
+}
+
+.filter-card .btn-primary {
+    background-color: #FFB22C; /* Cortai's orange */
+    border-color: #FFB22C;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.filter-card .btn-primary:hover {
+    background-color: #e69d00; /* Darker orange on hover */
+    border-color: #e69d00;
+}
+
+.filter-card .btn-outline-secondary {
+    border-color: #6c757d;
+    color: #6c757d;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.filter-card .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+/* Card General Styling */
+.card {
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #e0e0e0;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 0;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden; /* Ensures rounded corners */
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid #eee;
+}
+
+.table thead th {
+    background-color: #f9f9f9;
+    font-weight: 700;
+    color: #555;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Status Badges (Agendamentos) */
+.status-badge {
+    padding: 7px 12px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+}
+.status-pendente {
+    background-color: #fff3cd; /* Light yellow */
+    color: #856404; /* Dark yellow */
+}
+.status-confirmado {
+    background-color: #d4edda; /* Light green */
+    color: #155724; /* Dark green */
+}
+.status-cancelado {
+    background-color: #f8d7da; /* Light red */
+    color: #721c24; /* Dark red */
+}
+.status-concluido {
+    background-color: #cce5ff; /* Bootstrap's info light blue */
+    color: #004085; /* Bootstrap's info dark blue */
+}
+
+/* Value Badge (for prices) */
+.badge-valor {
+    background-color: #fcefd6; /* Lighter Cortai orange */
+    color: #FFB22C; /* Cortai's orange */
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Table Action Buttons */
+.table .btn-sm {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.table .btn-outline-primary {
+    color: #FFB22C; /* Cortai's orange */
+    border-color: #FFB22C;
+}
+.table .btn-outline-primary:hover {
+    background-color: #FFB22C;
+    color: #fff;
+}
+
+.table .btn-outline-danger {
+    color: #dc3545; /* Bootstrap's danger red */
+    border-color: #dc3545;
+}
+.table .btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.d-flex.gap-2 {
+    display: flex;
+    gap: 8px;
+}
+
+/* User Status Badges (Specific for Admin Users page) */
+.badge-admin {
+    background-color: #f8d7da; /* Light red, similar to danger */
+    color: #721c24; /* Dark red */
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge-cliente {
+    background-color: #e2f0fd; /* Light blue, similar to info */
+    color: #004085; /* Dark blue */
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Highlight row for deletion confirmation */
+.table-danger {
+    background-color: #f8d7da !important; /* Forces background for highlighted row */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    header {
+        padding: 15px 40px;
+    }
+    .filter-card .col-md-3 {
+        margin-bottom: 15px;
+    }
+    .filter-card .d-flex.align-items-end {
+        justify-content: flex-start;
+        align-items: center !important;
+    }
+    .filter-card .btn-primary, .filter-card .btn-outline-secondary {
+        width: auto;
+        flex-grow: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    header nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    main {
+        padding: 15px;
+    }
+    .filter-card {
+        padding: 20px;
+    }
+    .table-responsive {
+        border: 1px solid #e0e0e0; /* Add border for mobile scroll */
+        border-radius: 12px;
+    }
+    .table th, .table td {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    .filter-card .row.g-3 {
+        flex-direction: column;
+    }
+    .filter-card .col-md-3 {
+        width: 100%;
+    }
+    .filter-card .d-flex.align-items-end {
+        flex-direction: row;
+        gap: 10px;
+    }
+    .filter-card .btn-primary, .filter-card .btn-outline-secondary {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+    .status-badge, .badge-valor {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+    }
+}

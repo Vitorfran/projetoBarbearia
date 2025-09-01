@@ -1,0 +1,170 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000000;
+}
+
+h1 {
+  text-align: center;
+  color: #FFB22C;
+  margin: 40px 0 20px;
+  font-size: 28px;
+}
+
+.planos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.plano {
+  background-color: #FFB22C;
+  border-radius: 16px;
+  width: 220px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+
+
+.plano h2 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.tesoura {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 18px;
+}
+
+.preco-box {
+  background-color: #000000;
+  border-radius: 12px;
+  padding: 25px 10px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.preco-box .moeda {
+  font-size: 16px;
+  color: #FFB22C(0, 0%, 100%);
+}
+
+.preco-box .valor {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.preco-box .mes {
+  font-size: 16px;
+  color: #ffffff;
+}
+.moeda{
+  color: #ffffff;
+
+}
+
+.info {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+button {
+  background-color: #000000;
+  color: #FFB22C;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.voltar-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-voltar {
+  padding: 10px 20px;
+  background-color: #FFB22C;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.btn-voltar:hover {
+  background-color: #e09d22;
+}
+
+
+
+.cartoes {
+  margin: 40px auto;
+  max-width: 400px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.btn-cartao {
+  background-color: #FFB22C;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #000000;
+  max-width: 300px;
+  margin: 10px auto;
+  font-size: 16px;
+}
+
+.plus {
+  background-color: white;
+  color: #FFB22C;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartao-salvo {
+  background-color: #D9D9D9;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #C60000;
+  max-width: 300px;
+  margin: 10px auto;
+  font-size: 16px;
+}
+
+.cartao-salvo img {
+  width: 40px;
+  height: auto;
+}

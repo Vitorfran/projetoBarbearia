@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+background-color: #F7F7F7;
+font-family: 'Poppins';
+}
+
+.container {
+background: white;
+width: 400px;
+margin: 50px auto;
+padding: 30px;
+border-radius: 16px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+text-align: center;
+}
+
+h2 {
+color: #FFA500;
+margin-bottom: 24px;
+}
+
+.card-servico {
+background-color: #FFA500;
+border-radius: 16px;
+padding: 20px;
+position: relative;
+margin-bottom: 24px;
+}
+
+.cabecalho-card {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+select{
+  width: 100%
+}
+
+.titulo {
+text-align: center;
+width: 100%;
+}
+
+.icone-tesoura {
+width: 20px;
+height: 20px;
+}
+
+.imagem-servico {
+background-color: #D3D3D3;
+height: 100px;
+border-radius: 12px;
+margin: 16px 0;
+}
+
+.preco {
+background-color: #804000;
+color: #fff;
+border: none;
+padding: 6px 16px;
+border-radius: 20px;
+font-weight: bold;
+}
+
+
+.form input {
+width: 100%;
+padding: 12px;
+margin-bottom: 16px;
+border-radius: 20px;
+border: 1px solid #ccc;
+font-size: 16px;
+box-sizing: border-box;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+cursor: pointer;
+opacity: 1;
+filter: invert(0.4);
+height: 20px;
+width: 20px;
+}
+
+input[type="date"] + img {
+display: none;
+}
+
+.animated-radio {
+appearance: none;
+width: 18px;
+height: 18px;
+border: 2px solid #999;
+border-radius: 50%;
+position: relative;
+cursor: pointer;
+margin-right: 10px;
+transition: border-color 0.3s, background-color 0.3s;
+}
+
+.barbeiros {
+display: flex;
+gap: 20px;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.barbeiros label {
+cursor: pointer;
+}
+
+.barbeiros span {
+background-color: #FFE1A8;
+padding: 10px 20px;
+border-radius: 25px;
+font-weight: bold;
+transition: all 0.3s ease;
+user-select: none;
+display: inline-block;
+border: 2px solid transparent;
+color: #000;
+}
+
+.barbeiros input[type="radio"] {
+display: none;
+}
+
+.barbeiros input[type="radio"]:checked + span {
+background-color: #FFB22C;
+color: white;
+border: 2px solid #cc8400;
+}
+
+.barbeiros span:hover {
+background-color: #ffd074;
+}
+
+.barbeiros-container {
+text-align: center;
+margin-bottom: 45px;
+}
+
+.titulo-barbeiro {
+font-size: 1.2rem;
+font-weight: bold;
+margin-bottom: 35px;
+color: #854836;
+text-align: center; 
+width: 100%; 
+}
+
+.animated-radio:checked {
+  background-color: #FFB22C;
+  border-color: #FFB22C;
+}
+
+.animated-radio:checked::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  animation: pop 0.3s ease forwards;
+}
+
+/* Animação do círculo interno */
+@keyframes pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.submit-btn {
+  width: 80%; /* mais amigável pra mobile */
+  max-width: 400px; /* limite pra não esticar demais em telas grandes */
+  height: 60px;
+  background: #FFB22C;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: .3s;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.button-container {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 30px; 
+}
+
+.submit-btn:hover{
+  background: #FFB22C;
+  transform: scale(1.05,1);
+}
+
+
+ .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .alert {
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+    
+    .alert-danger {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    
+    .alert-success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .card-servico {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .cabecalho-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    
+    input[type="date"],
+    input[type="time"] {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    
+    .barbeiros-container {
+      margin-top: 20px;
+    }
+    
+    .titulo-barbeiro {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .barbeiros {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+    }
+    
+    .barbeiros label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 10px;
+      background-color: #f8f9fa;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .barbeiros label:hover {
+      background-color: #e9ecef;
+    }
+    
+    .button-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+    
+    .submit-btn {
+      padding: 12px 24px;
+      background-color: #FFB22C;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .submit-btn:hover {
+      background-color: #e69c00;
+    }
